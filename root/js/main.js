@@ -77,8 +77,9 @@ function seguirComprando() {
 
 //funcion para mostrar carrito e compras
 function mostrarCarrito() {
-    const carrito = carroCompras.map(medicamento => medicamento.nombreGenerico);
-    alert("Los ítems de tu carro de compra son " + carrito);
+    let carrito = "aún está vacío"
+    carrito = carroCompras.map(medicamento => medicamento.nombreGenerico);
+    alert("Ítems de tu carro de compra: " + carrito);
     let nuevaCompra = seguirComprando();
     segundoMenu(nuevaCompra)
 }
@@ -86,12 +87,13 @@ function mostrarCarrito() {
 
 //funcion para eliminar un medicamento del carro
 function eliminarMedicamento() {
-    let medicamentoABorrar = prompt("Indica el nombre comercial del medicamento que deseas eliminar de tu carro de compras (Bayaspirina, Ibupirac, Actron, Tafirol).");
+    let carrito = "aún está vacío"
+    carrito = carroCompras.map(medicamento => medicamento.nombreComercial);
+    let medicamentoABorrar = prompt(`Por el momento tienes en tu carro de compras ${carrito}. Indica el nombre comercial del medicamento que deseas eliminar de tu carro de compras (Bayaspirina, Ibupirac, Actron, Tafirol).`);
     let medicamento = carroCompras.find(medicamento => medicamento.nombreComercial === medicamentoABorrar)
     let indice = carroCompras.indexOf(medicamento);
     carroCompras.splice(indice, 1);
     console.log(carroCompras);
-    alert(`Eliminaste de tu carro de compras a ${medicamentoABorrar}`);
     let nuevaCompra = seguirComprando();
     segundoMenu(nuevaCompra);
 }
@@ -125,7 +127,8 @@ function eleccionMedicamento() {
             sumarMedicamento(medicamento3);
             break;
         case "5":
-            alert("No elegiste ninguna de nuestras opciones de analgésicos. Te esperamos para una nueva compra. Gracias.");
+            alert("No elegiste ninguna de nuestras opciones de analgésicos.");
+            calculoTotal()
             break;
     }
 }
