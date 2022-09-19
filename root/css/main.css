@@ -82,9 +82,7 @@ body {
 /* seccion shop */
 
 .shop-section {
-    margin-top: 50px;
-    
-
+    margin-top: 50px; 
 }
 
 .shop-section__title {
@@ -94,23 +92,12 @@ body {
     margin-top: 100px;
 }
 
-.shop-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: 1.5rem;
-    margin-top: 50px;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.shop__item {
-    background-color: #fff;
+.shop-container, .card {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap:20px;
+    padding: 15px;    
 }
 
 .shop__title {
@@ -128,6 +115,26 @@ body {
 .shop__icon {
     font-size: 2.5rem;
     color: #58974f;
+}
+
+.input-carroDeCompras {
+    display: inline;
+    border: none;
+    text-align: center;
+    width: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.section-btn {
+    text-align: center;
+}
+
+.section-carroComprasFinal {
+    text-align: center;
+    margin-top: 50px;
 }
 
 /*<-------------- SECCION MAS SALUD-RESERVA DE TURNO ----------->*/
@@ -152,7 +159,7 @@ body {
     padding: 70px 5px 20px;
     padding-left: 3rem;
     color: #58974f;
- 
+
 }
 
 .turnos-container-radio label {
@@ -199,7 +206,7 @@ body {
 /* footer */
 footer {
     background-color: #57974f4f;
-  
+
 }
 
 .footer-container {
