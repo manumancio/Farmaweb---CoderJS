@@ -16,74 +16,65 @@ function mostrarProductos(items) {
             <h5 class="card-title">${element.nombreComercial}</h5>
             <p class="card-text">${element.nombreGenerico}</p>
             <p class="card-text">$ ${element.precio}</p>
-            <button id="agregar${element.nombreComercial}" class="btn btn-success ">Agregar <i class="bi bi-bag-plus"></i></button>
-            <div class="d-flex flex-start mt-2 ">
-
-            <button id="eliminar${element.nombreComercial}" class="btn btn-outline-success" type="button"> - </button>
-
-            <p id="valorValue" type="text" class="input-carroDeCompras">1</p>
-
-            <button  class="btn btn-outline-success" type="button"> + </button>
-
-            </div>
+            <button id="agregar${element.nombreComercial}" class="btn btn-success ">Agregar <i class="bi bi-bag-plus"></i></button>      
             </div> 
         `
         productsContainer.appendChild(card)
 
         // boton "Agregar" que agrega productos
         const botonAgregar = document.getElementById(`agregar${element.nombreComercial}`)
-        botonAgregar.addEventListener("click", () => {
-            console.log(`${element.nombreComercial}`)
+        botonAgregar.addEventListener(`click`, () => {
             carroCompras.push(element)
-            alert(`Agregaste a tu carro de compras: ${element.nombreComercial}`)
             console.log(carroCompras)
-            document.getElementById("valorValue")
-            valorValue.innerHTML = `<p> (+=1)</p>`
+            mostrarCarrito()
         })
-
-        // boton "-" que elimina productos
-        const botonEliminar = document.getElementById(`eliminar${element.nombreComercial}`)
-        botonEliminar.addEventListener("click", () => {
-            const medicamentoABorrar = carroCompras.find(element => element.nombreComercial)
-            const indice = carroCompras.indexOf(medicamentoABorrar);
-            carroCompras.splice(indice, 1);
-            console.log(carroCompras)
-        })
-
-         // boton "+" que agrega productos
-
-    });
+    })
 }
 
 mostrarProductos(medicamentosEnVenta)
 
+//funcion para mostrar carrito
+const mostrarCarrito = () => {
+    contenedorCarroCompras.innerHTML = `` //para reinicializarlo
 
+    carroCompras.forEach(element => {
+        const div = document.createElement('div')
+        div.className = ('productosEnElCarrito')
+        div.innerHTML = `
+    <p class="productosCarrito-item">${element.nombreComercial}</p>
+    <p class="productosCarrito-item">Precio: $ ${element.precio}</p>   
+    <button id="eliminar${element.nombreComercial}" class="productosCarrito-item"><i class="bi bi-trash3"></i></button>
+    `
+        contenedorCarroCompras.appendChild(div)
 
-//boton finalizar compra
+        // boton "Eliminar" productos
+        const botonEliminar = document.getElementById(`eliminar${element.nombreComercial}`)
+        botonEliminar.addEventListener("click", () => eliminarMedicamento(element.nombreComercial))
 
-//funcion del cálculo del precio total de la compra
-function calcularTotal() {
-    let totalCompra = 0;
-    for (total of carroCompras) {
-        totalCompra += total.calcularPrecioConIva()
-    }
-    console.log(carroCompras);
-    return totalCompra.toFixed(2);
+    })
+
+    //mostrar numero de elementos en el icono de compras
+    const contadorCarroCompras = document.getElementById(`contadorCarroCompras`)
+    contadorCarroCompras.innerHTML = carroCompras.length
+
+    //mostrar el precio total
+    const precioTotal = document.getElementById(`precioTotal`)
+    precioTotal.innerHTML = carroCompras.reduce((acumulador, element) => acumulador + element.calcularPrecioConIva(), 0)
 }
 
-
-//funcion para mostrar carrito de compras
-function mostrarCarrito() {
-    let carrito = "aún está vacío"
-    carrito = carroCompras.map(element => element.nombreComercial);
-    return carrito;
+// funcion para eliminar medicamento 
+const eliminarMedicamento = medicamentoABorrar => {
+    const medicamento = carroCompras.find(element => element.nombreComercial === medicamentoABorrar);
+    const indice = carroCompras.indexOf(medicamento);
+    carroCompras.splice(indice, 1);
+    console.log(carroCompras)
+    mostrarCarrito()
 }
 
-
-const botonFinalizar = document.getElementById("botonFinalizarCompra")
-botonFinalizarCompra.addEventListener("click", () => {
-    document.getElementById("resultadosCompra")
-    resultadosCompra.innerHTML = `<h3>Mi carro de compras</h3>
-                                  <p>Ítems de tu carro de compra: ${mostrarCarrito()}</p>
-                                  <p>El precio final que debes abonar es es $ ${calcularTotal()}.</p>`
+//funcion para vaciar el carro de compras
+const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
+vaciarCarroCompras.addEventListener("click", () => {
+    carroCompras.length = 0
+    mostrarCarrito()
 })
+

@@ -17,18 +17,49 @@ body {
     padding-left: 3rem;
 }
 
+/* nav */
+
+.shop-icon {
+    border: none;
+    background-color: inherit;
+    margin-right: 3rem;
+    font-size: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: #000;
+}
+
+.shop-icon:hover {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.bi-shop-window {
+    border: none;
+    font-size: 2.5rem;
+}
+
+#contadorCarroCompras {
+    font-size: .8rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(231, 31, 31);
+    padding: 4px 8px;
+    margin: 0.1rem;
+    border-radius: 100%;
+    color: #fff;
+}
+
 /* seccion hero */
 
 .hero {
     background-image: url("../images/header7-2.jpg");
-    height: 75vh;
+    height: 70vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: end;
 }
 
 .hero__title {
-    padding-top: 80px;
+    padding-top: 130px;
     text-align: center;
     font-weight: 700;
     font-size: 3rem;
@@ -38,12 +69,10 @@ body {
     color: #58974f
 }
 
-
 .hero__subtitle {
     text-align: center;
     font-weight: 200;
     font-size: 1.9rem;
-
 }
 
 .hero__form {
@@ -76,13 +105,12 @@ body {
 }
 
 
-
-
 /* <-------------- SECCION E-COMMERCE DE FARMAWEB ---------------> */
 /* seccion shop */
 
 .shop-section {
-    margin-top: 50px; 
+    margin: 0 auto;
+     background-color: #ecf1f7;
 }
 
 .shop-section__title {
@@ -92,54 +120,66 @@ body {
     margin-top: 100px;
 }
 
-.shop-container, .card {
-    display: flex;
-    flex-wrap: wrap;
+
+.card {
+    display: flex;    
     justify-content: stretch;
-    gap:20px;
-    padding: 15px;    
-}
-
-.shop__title {
-    font-size: 1.2rem;
-}
-
-.shop__subtitle {
-    font-size: 1.1rem;
-}
-
-.shop__image {
-    width: 100%;
-}
-
-.shop__icon {
-    font-size: 2.5rem;
-    color: #58974f;
-}
-
-.input-carroDeCompras {
-    display: inline;
-    border: none;
-    text-align: center;
-    width: 40px;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 1.1rem;
-    font-weight: 500;
+    gap: 20px;
+    padding: 15px;
+    margin: 0 auto;
 }
 
 .section-btn {
     text-align: center;
 }
 
+.shop-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;   
+    justify-content: center; 
+    align-items: center;   
+}
+
+/* compra final/carro de compras */
+
 .section-carroComprasFinal {
-    text-align: center;
-    margin-top: 50px;
+    margin-top: 50px;    
+}
+
+.carroCompras-container p {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding-left: 5rem;
+}
+
+.carroCompras-final-item {
+    margin-left: 2rem;
+}
+.carroCompras-container button {
+    border: none;
+    background-color: inherit;
+}
+
+.productosEnElCarrito {
+   border-bottom: 1px solid #57974f79;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0.5rem;
+}
+
+.productosCarrito-item {
+width:20vw
+}
+
+.bi-trash3 {
+    font-size: 1.4rem;
+    color: rgb(247, 40, 40);
 }
 
 /*<-------------- SECCION MAS SALUD-RESERVA DE TURNO ----------->*/
 
-
+/* 
 .reservas-section {
     margin-top: 150px;
     text-align: center;
@@ -159,7 +199,6 @@ body {
     padding: 70px 5px 20px;
     padding-left: 3rem;
     color: #58974f;
-
 }
 
 .turnos-container-radio label {
@@ -201,7 +240,7 @@ body {
     background-color: #ecf1f7;
     color: #58974f;
 
-}
+} */
 
 /* footer */
 footer {

@@ -38,10 +38,14 @@
         <nav class="navbar bg-light fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">FarmaWeb</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div>
+                    <a class="shop-icon" href="#resultadosCompra"><i class="bi bi-shop-window"><span
+                                id="contadorCarroCompras">0</span></i></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
@@ -51,12 +55,11 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-
                             <li class="nav-item">
-                                <a class="nav-link" href="#belleza">Belleza</a>
+                                <a class="nav-link" href="#salud">Salud | Medicamentos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#salud">Salud</a>
+                                <a class="nav-link" href="#belleza">Belleza</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#bebes-maternidad">Bebés y Maternidad</a>
@@ -66,8 +69,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#reservas">Más Salud | <b>Reservá
-                                        tu
-                                        turno</b></a>
+                                        tu turno</b></a>
                             </li>
 
                         </ul>
@@ -85,19 +87,10 @@
         <div class="hero">
             <h1 class="hero__title">Tu <span>Farmacia</span> a tu puerta</h1>
             <h2 class="hero__subtitle">Tu salud es nuestra preocupación</h2>
-            <div class="hero__form">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-                </form>
-            </div>
-
         </div>
     </header>
 
     <main>
-
-
         <!--  seccion ventajas -->
         <section class="ventajas-container">
             <div class="ventajas__item">
@@ -124,29 +117,38 @@
 
 
 
-
-
         <!-------------- SECCION E-COMMERCE DE FARMAWEB --------------->
 
 
         <!--  seccion - medicamentos -->
-
         <section id="salud" class="shop-section">
             <h3 class="shop-section__title">Salud | Medicamentos</h3>
             <div id="productsContainer" class="shop-container">
+                
+            </div>
+        </section>
+
+
+        <!-- seccion compra final/carro compras -->
+
+        <section id="resultadosCompra" class="section-carroComprasFinal">
+            <div id="contenedorCarroCompras" class="carroCompras-container">
+                
+            </div>
+            <div class="carroCompras-final">
+                <p class="carroCompras-final-item">Precio Total (con IVA) $<span id="precioTotal"></span></p>
+                <button id="vaciarCarroCompras" class="btn btn-danger p-1 carroCompras-final-item">Vaciar Carrito</button>
             </div>
         </section>
 
         <section class="section-btn">
-            <button id="botonFinalizarCompra" class="btn btn-dark mt-5 p-2" type="button">Finalizar Compra</button>
+            <button id="botonFinalizarCompra" class="btn btn-dark m-5 p-2" type="button">Finalizar Compra</button>
         </section>
 
-        <section id="resultadosCompra" class="section-carroComprasFinal">
 
-        </section>
 
         <!-------------- SECCION MAS SALUD-RESERVA DE TURNO ----------->
-<!-- 
+        <!-- 
         <section id="reservas" class="reservas-section">
             <h2 class="reservas-section__title">Reservá tu turno</h2>
 
@@ -202,64 +204,64 @@
         </section>
     </main> -->
 
-    <!--  footer -->
-    <footer>
-        <div class="footer-container">
-            <div>
-                <a class="navbar-brand" href="index.html">FarmaWeb</a>
-            </div>
-            <div>
-                <section>
-                    <h4>Institucional</h4>
-                </section>
-                <ul>
-                    <li>La Empresa</li>
-                    <li>Nuestras Sucursales</li>
-                    <li>Más Salud</li>
-                </ul>
-            </div>
-            <div>
-                <section>
-                    <h4>Otras Secciones</h4>
-                </section>
-                <ul>
-                    <li>Métodos de Envío</li>
-                    <li>Retiro en Sucursal</li>
-                    <li>Metodos de Pago Online</li>
-                </ul>
-            </div>
-            <div>
-                <section>
-                    <h4>Atención al Cliente</h4>
-                </section>
-                <ul>
-                    <li>Consultas, Sugerencias y Reclamos</li>
-                    <li>Preguntas Frecuentes</li>
-                    <li>Términos y Condiciones</li>
-                    <li>Políticas de Privacidad</li>
-                    <li>Políticas de Cambios y Devoluciones</li>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <section>
+        <!--  footer -->
+        <footer>
+            <div class="footer-container">
                 <div>
-                    <h5>FarmaWeb | Todos los derechos reservados | Manuela Mancione</h5>
+                    <a class="navbar-brand" href="index.html">FarmaWeb</a>
                 </div>
-            </section>
-        </div>
-    </footer>
+                <div>
+                    <section>
+                        <h4>Institucional</h4>
+                    </section>
+                    <ul>
+                        <li>La Empresa</li>
+                        <li>Nuestras Sucursales</li>
+                        <li>Más Salud</li>
+                    </ul>
+                </div>
+                <div>
+                    <section>
+                        <h4>Otras Secciones</h4>
+                    </section>
+                    <ul>
+                        <li>Métodos de Envío</li>
+                        <li>Retiro en Sucursal</li>
+                        <li>Metodos de Pago Online</li>
+                    </ul>
+                </div>
+                <div>
+                    <section>
+                        <h4>Atención al Cliente</h4>
+                    </section>
+                    <ul>
+                        <li>Consultas, Sugerencias y Reclamos</li>
+                        <li>Preguntas Frecuentes</li>
+                        <li>Términos y Condiciones</li>
+                        <li>Políticas de Privacidad</li>
+                        <li>Políticas de Cambios y Devoluciones</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <section>
+                    <div>
+                        <h5>FarmaWeb | Todos los derechos reservados | Manuela Mancione</h5>
+                    </div>
+                </section>
+            </div>
+        </footer>
 
 
 
-    <!--  Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
+        <!--  Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+        </script>
 
-    <!--  javascript -->
-    <script src="./js/products.js"></script>
-    <script src="./js/main.js"></script>
+        <!--  javascript -->
+        <script src="./js/products.js"></script>
+        <script src="./js/main.js"></script>
 
 
 </body>

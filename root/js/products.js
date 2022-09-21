@@ -17,7 +17,7 @@ class Medicamento {
 }
 
 const actron = new Medicamento("Actron", "Ibuprofeno 400 mg", 110, 1000, "./images/rsz_actron.png");
-const actronMujer = new Medicamento("Actron", "Ibuprofeno 400 mg", 110, 1000, "./images/rsz_actronMujer.jpg");
+const actronMujer = new Medicamento("Actron Mujer", "Ibuprofeno 400 mg", 110, 1100, "./images/rsz_actronMujer.jpg");
 const actronPediatrico = new Medicamento("Actron Pediátrico", "Ibuprofeno 2%", 110, 1000, "./images/rsz_actronPediatrico.png");
 const ibupirac = new Medicamento("Ibupirac", "Ibuprofeno 400 mg", 120, 1500, "./images/rsz_ibupirac.png");
 const ibuevanolForte = new Medicamento("Ibuevanol Forte", "Ibuprofeno 400 mg", 125, 500, "./images/rsz_ibuevanolForte.png");
