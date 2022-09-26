@@ -1,6 +1,49 @@
+//buscador de medicamentos
+
+const displayCoincidencias = document.getElementById('displayCoincidencias');
+const buscadorMedicamentos = document.getElementById('buscadorMedicamentos');
+const btnBuscadorMedicamentos = document.getElementById('btnBuscadorMedicamentos')
+
+const filtrar = () => {
+    displayCoincidencias.innerHTML = ''; //para reiniciar
+    const texto = buscadorMedicamentos.value.toLowerCase();
+
+    medicamentosEnVenta.forEach((elemento) => {
+        let nombreIngresado = elemento.nombreComercial.toLowerCase();
+
+        if (nombreIngresado.indexOf(texto) >= 0) {
+            let displayCoincidenciasItem = document.createElement("displayCoincidenciasItem")
+            displayCoincidenciasItem.classList.add("displayCoincidenciasItem", "card", "col-xl-3", "col-md-6", "col-sm-12")
+            displayCoincidenciasItem.innerHTML += `
+                <img src="${elemento.imagen}" class="img-buscador" alt="Imagen ilustrativa del medicamento ${elemento.nombreComercial}">
+                <div class="card-body p-4">
+                    <h5 class="card-title p-1">${elemento.nombreComercial}</h5>
+                    <p class="card-text">${elemento.nombreGenerico}</p>
+                    <p class="card-text">$ ${elemento.precio}</p>
+                    <button id="agregar${elemento.nombreComercial}" class="btn btn-success btn-success-agregar">Agregar al carrito <i class="bi bi-bag-plus"></i></button>      
+                 </div> `
+            displayCoincidencias.appendChild(displayCoincidenciasItem)
+
+            // boton "Agregar" que agrega productos
+            const botonAgregar = document.getElementById(`agregar${elemento.nombreComercial}`)
+            botonAgregar.addEventListener(`click`, () => {
+                agregarMedicamento(elemento.nombreComercial)
+            })
+        }
+    })
+
+    //si le dan "enter" o no encuentra el resultado:
+    if (buscadorMedicamentos.value.innerHTML === ``) {
+        displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
+    }
+}
+
+btnBuscadorMedicamentos.onclick = () => {
+    filtrar();
+}
+
 //array carro de compras inicial
 const carroCompras = []
-
 
 // funcion para mostrar productos
 const productsContainer = document.getElementById("productsContainer");
@@ -11,38 +54,40 @@ function mostrarProductos(items) {
         card.classList.add("card")
         card.style = "width: 18rem;"
         card.innerHTML = `
-            <img src="${element.imagen}" class="card-img-top" alt="Imagen ilustrativa del medicamento ${element.nombreComercial}">
-            <div class="card-body">
-            <h5 class="card-title">${element.nombreComercial}</h5>
-            <p class="card-text">${element.nombreGenerico}</p>
-            <p class="card-text">$ ${element.precio}</p>
-            <button id="agregar${element.nombreComercial}" class="btn btn-success ">Agregar <i class="bi bi-bag-plus"></i></button>      
-            </div> 
-        `
+                <img src="${element.imagen}" class="card-img-top" alt="Imagen ilustrativa del medicamento ${element.nombreComercial}">
+                <div class="card-body">
+                    <h5 class="card-title ">${element.nombreComercial}</h5>
+                    <p class="card-text">${element.nombreGenerico}</p>
+                    <p class="card-text">$ ${element.precio}</p>
+                    <button id="agregar${element.nombreComercial}" class="btn btn-success btn-success-agregar">Agregar al carrito <i class="bi bi-bag-plus"></i></button>      
+                </div>  `
         productsContainer.appendChild(card)
 
         // boton "Agregar" que agrega productos
         const botonAgregar = document.getElementById(`agregar${element.nombreComercial}`)
         botonAgregar.addEventListener(`click`, () => {
-            carroCompras.push(element)
-            console.log(carroCompras)
-            mostrarCarrito()
+            agregarMedicamento(element.nombreComercial)
         })
     })
 }
 
 mostrarProductos(medicamentosEnVenta)
 
+
+
+
+
 //funcion para mostrar carrito
-const mostrarCarrito = () => {
+const mostrarCarrito = (array) => {
     contenedorCarroCompras.innerHTML = `` //para reinicializarlo
 
-    carroCompras.forEach(element => {
+    array.forEach(element => {
         const div = document.createElement('div')
         div.className = ('productosEnElCarrito')
         div.innerHTML = `
     <p class="productosCarrito-item">${element.nombreComercial}</p>
-    <p class="productosCarrito-item">Precio: $ ${element.precio}</p>   
+    <p class="productosCarrito-item">$ ${element.precio}</p>
+    <p class="productosCarrito-item">Cantidad: ${element.cantidad}</p>   
     <button id="eliminar${element.nombreComercial}" class="productosCarrito-item"><i class="bi bi-trash3"></i></button>
     `
         contenedorCarroCompras.appendChild(div)
@@ -51,16 +96,50 @@ const mostrarCarrito = () => {
         const botonEliminar = document.getElementById(`eliminar${element.nombreComercial}`)
         botonEliminar.addEventListener("click", () => eliminarMedicamento(element.nombreComercial))
 
+
+        // para guardar los datos en el local storage    
+        function guardarLocal(clave, valor) {
+            localStorage.setItem(clave, (valor));
+        }
+        guardarLocal('carroCompras', JSON.stringify(carroCompras));
+
     })
+
 
     //mostrar numero de elementos en el icono de compras
     const contadorCarroCompras = document.getElementById(`contadorCarroCompras`)
-    contadorCarroCompras.innerHTML = carroCompras.length
+    contadorCarroCompras.innerHTML = array.length
 
-    //mostrar el precio total
+    //mostrar el precio total inicial
     const precioTotal = document.getElementById(`precioTotal`)
-    precioTotal.innerHTML = carroCompras.reduce((acumulador, element) => acumulador + element.calcularPrecioConIva(), 0)
+    precioTotal.innerHTML = array.reduce((acumulador, element) => acumulador + element.calcularPrecioSegunUnidades(), 0).toFixed(2)
+
+
+    //mostrar el precio con descuento
+    const precioConDescuento = document.getElementById(`precioConDescuento`)
+    precioConDescuento.innerHTML = array.reduce((acumulador, element) => acumulador + element.calcularConDescuento(), 0).toFixed(2)
+
+    //mostrar el precio final
+    const precioFinal = document.getElementById(`precioFinal`)
+    precioFinal.innerHTML = array.reduce((acumulador, element) => acumulador + element.calcularConDescuento(), 0).toFixed(2)
 }
+
+
+// para obtener la info del local storage
+document.addEventListener('DOMContentLoaded', () => {
+    const carroCompras = []
+    if (localStorage.getItem('carroCompras')) {
+        const almacenados = JSON.parse(localStorage.getItem('carroCompras'))
+        for (items of almacenados)
+            carroCompras.push(items);
+    }
+    console.log(carroCompras)
+    mostrarCarrito(carroCompras)
+
+    
+    
+})
+
 
 // funcion para eliminar medicamento 
 const eliminarMedicamento = medicamentoABorrar => {
@@ -68,13 +147,31 @@ const eliminarMedicamento = medicamentoABorrar => {
     const indice = carroCompras.indexOf(medicamento);
     carroCompras.splice(indice, 1);
     console.log(carroCompras)
-    mostrarCarrito()
+    mostrarCarrito(carroCompras)
 }
 
 //funcion para vaciar el carro de compras
 const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
 vaciarCarroCompras.addEventListener("click", () => {
     carroCompras.length = 0
-    mostrarCarrito()
+    mostrarCarrito(carroCompras)
 })
 
+// funcion para agregar medicamento
+const agregarMedicamento = medicamentoAAgregar => {
+    //primero: veo si ya hay coincidencias -- sumo cantidades
+    const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoAAgregar)
+    if (siYaExiste) {
+        carroCompras.map(element => {
+            if (element.nombreComercial === medicamentoAAgregar) {
+                element.cantidad++;
+            }
+        })
+    } else {
+        //segundo: agrego el medicamento
+        const medicamento = medicamentosEnVenta.find(element => element.nombreComercial === medicamentoAAgregar);
+        carroCompras.push(medicamento);
+        console.log(carroCompras);
+    }
+    mostrarCarrito(carroCompras)
+}

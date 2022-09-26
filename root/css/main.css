@@ -82,6 +82,34 @@ body {
     margin-top: 15px;
 }
 
+/* buscador */
+.buscador-div-item {
+    display: flex;
+    justify-content: space-around;
+}
+
+.displayCoincidenciasItem {
+  margin: 2rem; 
+  padding: 25px 0;
+  border-radius: 10px;
+  background-color: #57974f5d;
+}
+
+.buscador-div {
+    text-align: center;      
+}
+
+.buscador {
+    width: 30%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 0.3px solid rgba(0, 0, 0, 0.575);
+    margin: 1rem 0;
+}
+
+.buscador-div {
+    background-color: #57974f21;
+}
 
 /* seccion ventajas */
 .ventajas-container {
@@ -114,12 +142,18 @@ body {
 }
 
 .shop-section__title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    margin-top: 100px;
+    margin: 100px 0 50px;
 }
 
+.shop-section__subtitle {
+    padding: 2rem;
+    margin-left: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
 
 .card {
     display: flex;    
@@ -133,12 +167,15 @@ body {
     text-align: center;
 }
 
+
+
 .shop-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;   
     justify-content: center; 
     align-items: center;   
+    margin: 40px;
 }
 
 /* compra final/carro de compras */
@@ -150,7 +187,7 @@ body {
 .carroCompras-container p {
     display: inline-block;
     font-size: 1.1rem;
-    padding-left: 5rem;
+ 
 }
 
 .carroCompras-final-item {
@@ -162,14 +199,19 @@ body {
 }
 
 .productosEnElCarrito {
-   border-bottom: 1px solid #57974f79;
+   border-bottom: 1px solid #57974f17;
     display: flex;
     justify-content: space-evenly;
     margin: 0.5rem;
 }
 
+.productosCarrito-item--title {
+    font-weight: 700;
+    border-bottom: 1px solid #000 ;
+}
+
 .productosCarrito-item {
-width:20vw
+width:6vw;
 }
 
 .bi-trash3 {

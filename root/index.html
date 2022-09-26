@@ -88,6 +88,7 @@
             <h1 class="hero__title">Tu <span>Farmacia</span> a tu puerta</h1>
             <h2 class="hero__subtitle">Tu salud es nuestra preocupación</h2>
         </div>
+
     </header>
 
     <main>
@@ -122,22 +123,45 @@
 
         <!--  seccion - medicamentos -->
         <section id="salud" class="shop-section">
-            <h3 class="shop-section__title">Salud | Medicamentos</h3>
+            <h3 class="shop-section__title">Salud - Nuestros productos</h3>
+
+            <!-- buscador -->
+            <div>
+                <div class="buscador-div">
+                    <input type="search" id="buscadorMedicamentos" class="buscador"
+                        placeholder="Buscar medicamentos por nombre comercial...">
+                    <button id="btnBuscadorMedicamentos" class="btn btn-outline-success"><i
+                            class="bi bi-search"></i></button>
+                </div>
+                <div class="buscador-div-container">
+                    <div id="displayCoincidencias" class="buscador-div-item ">
+                        <!-- genera los divs nuevos  -->
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="shop-section__subtitle">Medicamentos | Analgésicos</h4>
+
             <div id="productsContainer" class="shop-container">
-                
+
+                <!-- genera los divs nuevos  -->
             </div>
         </section>
 
 
         <!-- seccion compra final/carro compras -->
 
-        <section id="resultadosCompra" class="section-carroComprasFinal">
+        <section id="resultadosCompra" class="section-carroComprasFinal">           
             <div id="contenedorCarroCompras" class="carroCompras-container">
-                
+                <!-- genera nuevos div -->
             </div>
             <div class="carroCompras-final">
-                <p class="carroCompras-final-item">Precio Total (con IVA) $<span id="precioTotal"></span></p>
-                <button id="vaciarCarroCompras" class="btn btn-danger p-1 carroCompras-final-item">Vaciar Carrito</button>
+                <p class="carroCompras-final-item">Precio de productos: $ <span id="precioTotal"></span></p>
+                <p class="carroCompras-final-item"><b>Precio con descuento: $ </b><span id="precioConDescuento"></span>
+                </p>
+                <p class="carroCompras-final-item">Total de mis productos: $ <span id="precioFinal"></span></p>
+                <button id="vaciarCarroCompras" class="btn btn-danger p-1 carroCompras-final-item">Vaciar
+                    Carrito</button>
             </div>
         </section>
 
