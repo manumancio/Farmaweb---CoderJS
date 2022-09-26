@@ -112,16 +112,16 @@ const mostrarCarrito = (array) => {
 
     //mostrar el precio total inicial
     const precioTotal = document.getElementById(`precioTotal`)
-    precioTotal.innerHTML = array.reduce((acumulador, element) => acumulador + element.calcularPrecioSegunUnidades(), 0).toFixed(2)
+    precioTotal.innerHTML = carroCompras.reduce((acumulador, element) => acumulador + element.calcularPrecioSegunUnidades(), 0).toFixed(2)
 
 
     //mostrar el precio con descuento
     const precioConDescuento = document.getElementById(`precioConDescuento`)
-    precioConDescuento.innerHTML = array.reduce((acumulador, element) => acumulador + element.calcularConDescuento(), 0).toFixed(2)
+    precioConDescuento.innerHTML = carroCompras.reduce((acumulador, element) => acumulador + element.calcularConDescuento(), 0).toFixed(2)
 
     //mostrar el precio final
     const precioFinal = document.getElementById(`precioFinal`)
-    precioFinal.innerHTML = array.reduce((acumulador, element) => acumulador + element.calcularConDescuento(), 0).toFixed(2)
+    precioFinal.innerHTML = carroCompras.reduce((acumulador, element) => acumulador + element.calcularConDescuento(), 0).toFixed(2)
 }
 
 
