@@ -214,6 +214,23 @@ body {
 width:6vw;
 }
 
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.btn-signo {
+    color: #58974f;
+    border: #58974f;
+    font-size:1.4rem;   
+    padding: 3px 5px;
+}
+.numero-cantidad {
+    margin: auto 0;
+    padding: 0 3px;
+    align-items: center;
+}
 .bi-trash3 {
     font-size: 1.4rem;
     color: rgb(247, 40, 40);

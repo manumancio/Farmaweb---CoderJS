@@ -87,7 +87,11 @@ const mostrarCarrito = (array) => {
         div.innerHTML = `
     <p class="productosCarrito-item">${element.nombreComercial}</p>
     <p class="productosCarrito-item">$ ${element.precio}</p>
-    <p class="productosCarrito-item">Cantidad: ${element.cantidad}</p>   
+    <div class="productosCarrito-item btn-container">
+        <button id="btnPlus${element.nombreComercial}" type="button" class="btn "><i class="bi bi-plus-circle btn-signo"></i></button>
+        <p class="numero-cantidad">${element.cantidad}</p>
+        <button id="btnDash${element.nombreComercial}" type="button" class="btn "><i class="bi bi-dash-circle btn-signo"></i></button>
+    </div>
     <button id="eliminar${element.nombreComercial}" class="productosCarrito-item"><i class="bi bi-trash3"></i></button>
     `
         contenedorCarroCompras.appendChild(div)
@@ -95,6 +99,14 @@ const mostrarCarrito = (array) => {
         // boton "Eliminar" productos
         const botonEliminar = document.getElementById(`eliminar${element.nombreComercial}`)
         botonEliminar.addEventListener("click", () => eliminarMedicamento(element.nombreComercial))
+
+        // boton suma cantidad
+        const btnPlus = document.getElementById(`btnPlus${element.nombreComercial}`)
+        btnPlus.addEventListener("click", () => agregarMedicamento(element.nombreComercial))
+
+        //boton resta cantidad
+        const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
+        btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
 
 
         // para guardar los datos en el local storage    
@@ -135,9 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     console.log(carroCompras)
     mostrarCarrito(carroCompras)
-
-    
-    
 })
 
 
@@ -172,6 +181,23 @@ const agregarMedicamento = medicamentoAAgregar => {
         const medicamento = medicamentosEnVenta.find(element => element.nombreComercial === medicamentoAAgregar);
         carroCompras.push(medicamento);
         console.log(carroCompras);
+    }
+    mostrarCarrito(carroCompras)
+}
+
+//borrar con dash
+const restarUnidad = (medicamentoARestar) => {
+    const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoARestar)
+    if (siYaExiste) {
+        carroCompras.map(element => {
+            if (element.nombreComercial === medicamentoARestar) {
+                if (element.cantidad > 1) {
+                    element.cantidad--;
+                } else {
+                    element.cantidad = 1
+                }
+            }
+        })
     }
     mostrarCarrito(carroCompras)
 }
