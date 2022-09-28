@@ -13,7 +13,7 @@ const filtrar = () => {
 
         if (nombreIngresado.indexOf(texto) >= 0) {
             let displayCoincidenciasItem = document.createElement("displayCoincidenciasItem")
-            displayCoincidenciasItem.classList.add("displayCoincidenciasItem", "card", "col-xl-3", "col-md-6", "col-sm-12")
+            displayCoincidenciasItem.classList.add("displayCoincidenciasItem")
             displayCoincidenciasItem.innerHTML += `
                 <img src="${elemento.imagen}" class="img-buscador" alt="Imagen ilustrativa del medicamento ${elemento.nombreComercial}">
                 <div class="card-body p-4">

@@ -86,15 +86,26 @@ body {
 .buscador-div-item {
     display: flex;
     justify-content: space-around;
+    
+     flex-wrap: wrap;
+   
 }
 
 .displayCoincidenciasItem {
-  margin: 2rem; 
+   
+  margin: 1rem ; 
   padding: 25px 0;
   border-radius: 10px;
   background-color: #57974f5d;
 }
 
+.buscador-div-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80vw;
+    margin: 0 auto;
+}
 .buscador-div {
     text-align: center;      
 }
