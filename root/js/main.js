@@ -29,13 +29,15 @@ const filtrar = () => {
             botonAgregar.addEventListener(`click`, () => {
                 agregarMedicamento(elemento.nombreComercial)
             })
+        } else {
+            displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
+        }
+
+        //si no ponen nada o no encuentra el resultado:
+        if (buscadorMedicamentos.value === "") {
+            displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
         }
     })
-
-    //si le dan "enter" o no encuentra el resultado:
-    if (buscadorMedicamentos.value.innerHTML === ``) {
-        displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
-    }
 }
 
 btnBuscadorMedicamentos.onclick = () => {
