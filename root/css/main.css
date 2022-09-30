@@ -232,7 +232,7 @@ width:6vw;
 }
 
 .btn-signo {
-    color: #58974f;
+    color: hsla(113, 31%, 45%, 0.527);
     border: #58974f;
     font-size:1.4rem;   
     padding: 3px 5px;

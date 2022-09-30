@@ -12,6 +12,7 @@ const filtrar = () => {
         let nombreIngresado = elemento.nombreComercial.toLowerCase();
 
         if (nombreIngresado.indexOf(texto) >= 0) {
+            console.log(nombreIngresado.indexOf(texto))
             let displayCoincidenciasItem = document.createElement("displayCoincidenciasItem")
             displayCoincidenciasItem.classList.add("displayCoincidenciasItem")
             displayCoincidenciasItem.innerHTML += `
@@ -29,28 +30,25 @@ const filtrar = () => {
             botonAgregar.addEventListener(`click`, () => {
                 agregarMedicamento(elemento.nombreComercial)
             })
+        }
 
-        } 
-        
         // else  {
         //      displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
         // }
-
-
-
     })
     //si no ponen nada 
-    if (buscadorMedicamentos.value === "") {
-        displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
-    }
+    buscadorMedicamentos.value === "" && (displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`)
+
 }
 
 btnBuscadorMedicamentos.onclick = () => {
     filtrar();
 }
 
+
 //array carro de compras inicial
 const carroCompras = []
+
 
 // funcion para mostrar productos
 const productsContainer = document.getElementById("productsContainer");
@@ -81,9 +79,6 @@ function mostrarProductos(items) {
 mostrarProductos(medicamentosEnVenta)
 
 
-
-
-
 //funcion para mostrar carrito
 const mostrarCarrito = (array) => {
     contenedorCarroCompras.innerHTML = `` //para reinicializarlo
@@ -94,10 +89,10 @@ const mostrarCarrito = (array) => {
         div.innerHTML = `
     <p class="productosCarrito-item">${element.nombreComercial}</p>
     <p class="productosCarrito-item">$ ${element.precio}</p>
-    <div class="productosCarrito-item btn-container">
-        <button id="btnPlus${element.nombreComercial}" type="button" class="btn "><i class="bi bi-plus-circle btn-signo"></i></button>
+    <div class="productosCarrito-item btn-container">    
+        <button id="btnDash${element.nombreComercial}" type="button" class="btn "><i class="bi bi-dash-circle btn-signo"></i></button>       
         <p class="numero-cantidad">${element.cantidad}</p>
-        <button id="btnDash${element.nombreComercial}" type="button" class="btn "><i class="bi bi-dash-circle btn-signo"></i></button>
+        <button id="btnPlus${element.nombreComercial}" type="button" class="btn "><i class="bi bi-plus-circle btn-signo"></i></button>
     </div>
     <button id="eliminar${element.nombreComercial}" class="productosCarrito-item"><i class="bi bi-trash3"></i></button>
     `
@@ -169,8 +164,27 @@ const eliminarMedicamento = medicamentoABorrar => {
 //funcion para vaciar el carro de compras
 const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
 vaciarCarroCompras.addEventListener("click", () => {
-    carroCompras.length = 0
-    mostrarCarrito(carroCompras)
+    Swal.fire({
+        title: '¿Estás seguro de que quieres vaciar tu carro de compras?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: ' Cancelar',
+        confirmButtonText: 'Si, eliminar items!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Tus items han sido removidos de tu carro de compras!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            carroCompras.length = 0
+            mostrarCarrito(carroCompras)
+        }
+    })
 })
 
 // funcion para agregar medicamento
@@ -179,9 +193,7 @@ const agregarMedicamento = medicamentoAAgregar => {
     const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoAAgregar)
     if (siYaExiste) {
         carroCompras.map(element => {
-            if (element.nombreComercial === medicamentoAAgregar) {
-                element.cantidad++;
-            }
+            element.nombreComercial === medicamentoAAgregar && element.cantidad++;
         })
     } else {
         //segundo: agrego el medicamento
@@ -189,6 +201,13 @@ const agregarMedicamento = medicamentoAAgregar => {
         carroCompras.push(medicamento);
         console.log(carroCompras);
     }
+    Toastify({
+        text: "Se ha agregado a tu carro de compras!",
+        duration: 2500,
+        style: {
+    background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.8))",
+  },
+    }).showToast()
     mostrarCarrito(carroCompras)
 }
 
@@ -198,13 +217,20 @@ const restarUnidad = (medicamentoARestar) => {
     if (siYaExiste) {
         carroCompras.map(element => {
             if (element.nombreComercial === medicamentoARestar) {
-                if (element.cantidad > 1) {
-                    element.cantidad--;
-                } else {
-                    element.cantidad = 1
-                }
+                element.cantidad > 1 ? element.cantidad-- : element.cantidad = 1
             }
         })
     }
     mostrarCarrito(carroCompras)
 }
+
+
+//FINALIZACION DE LA COMPRA
+
+// const botonFinalizarCompra = document.getElementById('botonFinalizarCompra')
+// botonFinalizarCompra.addEventListener("click", () => {
+
+// //ventana modal. css: formulario
+//     carroCompras.length = 0
+//     mostrarCarrito(carroCompras)    
+// })
