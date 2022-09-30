@@ -38,7 +38,6 @@ const filtrar = () => {
     })
     //si no ponen nada 
     buscadorMedicamentos.value === "" && (displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`)
-
 }
 
 btnBuscadorMedicamentos.onclick = () => {
@@ -110,13 +109,11 @@ const mostrarCarrito = (array) => {
         const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
         btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
 
-
         // para guardar los datos en el local storage    
         function guardarLocal(clave, valor) {
             localStorage.setItem(clave, (valor));
         }
         guardarLocal('carroCompras', JSON.stringify(carroCompras));
-
     })
 
 
@@ -127,7 +124,6 @@ const mostrarCarrito = (array) => {
     //mostrar el precio total inicial
     const precioTotal = document.getElementById(`precioTotal`)
     precioTotal.innerHTML = carroCompras.reduce((acumulador, element) => acumulador + element.calcularPrecioSegunUnidades(), 0).toFixed(2)
-
 
     //mostrar el precio con descuento
     const precioConDescuento = document.getElementById(`precioConDescuento`)
