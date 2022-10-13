@@ -44,6 +44,7 @@
                 <div>
                     <a class="shop-icon" href="#resultadosCompra"><i class="bi bi-shop-window"><span
                                 id="contadorCarroCompras">0</span></i></a>
+                    <a class="shop-icon" href="#buscador"><i class="bi bi-search bi-search--nav"></i></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -76,10 +77,6 @@
                             </li>
 
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -126,7 +123,7 @@
 
         <!--  seccion - medicamentos -->
         <section id="salud" class="shop-section">
-            <h3 class="shop-section__title">Salud - Nuestros productos</h3>
+            <h3 id="buscador" class="shop-section__title">Salud - Nuestros productos</h3>
 
             <!-- buscador -->
             <div>
@@ -154,7 +151,7 @@
 
         <!-- seccion compra final/carro compras -->
 
-        <section id="resultadosCompra" class="section-carroComprasFinal">           
+        <section id="resultadosCompra" class="section-carroComprasFinal">
             <div id="contenedorCarroCompras" class="carroCompras-container">
                 <!-- genera nuevos div -->
             </div>
@@ -290,7 +287,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <!-- Toastify -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>        
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
         <!--  javascript -->
         <script src="./js/products.js"></script>
