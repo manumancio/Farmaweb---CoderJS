@@ -153,6 +153,25 @@ body {
     font-size: 1.3rem;
 }
 
+/* slider */
+.div-ofertas { 
+    padding: 2rem;
+    background-color: #9ff89346
+}
+.slider-container {
+    padding: 2rem auto;      
+    text-align: center;
+}
+
+.slider-title {
+    text-align: center;
+    padding: 1rem;
+}
+.slider-img {
+width: 25vw;
+border-radius: 10px;
+}
+
 
 /* <-------------- SECCION E-COMMERCE DE FARMAWEB ---------------> */
 /* seccion shop */

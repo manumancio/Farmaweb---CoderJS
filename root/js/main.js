@@ -201,8 +201,8 @@ const agregarMedicamento = medicamentoAAgregar => {
         text: "Se ha agregado a tu carro de compras!",
         duration: 2500,
         style: {
-    background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.8))",
-  },
+            background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.8))",
+        },
     }).showToast()
     mostrarCarrito(carroCompras)
 }
@@ -219,6 +219,58 @@ const restarUnidad = (medicamentoARestar) => {
     }
     mostrarCarrito(carroCompras)
 }
+
+
+//slider
+
+const slider1 = document.getElementById("slider1")
+const slider2 = document.getElementById("slider2")
+const slider3 = document.getElementById("slider3")
+
+const images1 = ["slider5.jpg", "slider6.jpg"]
+let indexImages1 = 0
+
+const cambiarImg1 = function () {
+    slider1.src = `./images/${images1[indexImages1]}`
+    if (indexImages1 < 1) {
+        indexImages1++
+    } else {
+        indexImages1 = 0
+    }
+}
+cambiarImg1();
+setInterval(cambiarImg1, 3000)
+
+
+const images2 = ["slider1.jpg", "slider2.jpg"]
+let indexImages2 = 0
+
+const cambiarImg2 = function () {
+    slider2.src = `./images/${images2[indexImages2]}`
+    if (indexImages2 < 1) {
+        indexImages2++
+    } else {
+        indexImages2 = 0
+    }
+}
+cambiarImg2();
+setInterval(cambiarImg2, 3000)
+
+
+const images3 = ["slider3.jpg", "slider4.jpg"]
+let indexImages3 = 0
+
+const cambiarImg3 = function () {
+    slider3.src = `./images/${images3[indexImages3]}`
+    if (indexImages3 < 1) {
+        indexImages3++
+    } else {
+        indexImages3 = 0
+    }
+}
+cambiarImg3();
+setInterval(cambiarImg3, 3000);
+
 
 
 //FINALIZACION DE LA COMPRA
