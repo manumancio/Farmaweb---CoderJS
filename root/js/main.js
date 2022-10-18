@@ -31,10 +31,6 @@ const filtrar = () => {
                 agregarMedicamento(elemento.nombreComercial)
             })
         }
-
-        // else  {
-        //      displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`
-        // }
     })
     //si no ponen nada 
     buscadorMedicamentos.value === "" && (displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto <i class="bi bi-emoji-frown"></i>`)
@@ -49,15 +45,21 @@ btnBuscadorMedicamentos.onclick = () => {
 const carroCompras = []
 
 
+
+
 // funcion para mostrar productos
 const productsContainer = document.getElementById("productsContainer");
 
-function mostrarProductos(items) {
-    items.forEach(element => {
-        let card = document.createElement("div")
-        card.classList.add("card")
-        card.style = "width: 18rem;"
-        card.innerHTML = `
+const productos = "json/productos.json";
+fetch(productos)
+    .then(response => response.json())
+    .then(item => {
+
+        item.forEach(element => {
+            let card = document.createElement("div")
+            card.classList.add("card")
+            card.style = "width: 18rem;"
+            card.innerHTML = `
                 <img src="${element.imagen}" class="card-img-top" alt="Imagen ilustrativa del medicamento ${element.nombreComercial}">
                 <div class="card-body">
                     <h5 class="card-title ">${element.nombreComercial}</h5>
@@ -65,17 +67,18 @@ function mostrarProductos(items) {
                     <p class="card-text">$ ${element.precio}</p>
                     <button id="agregar${element.nombreComercial}" class="btn btn-success btn-success-agregar">Agregar al carrito <i class="bi bi-bag-plus"></i></button>      
                 </div>  `
-        productsContainer.appendChild(card)
+            productsContainer.appendChild(card)
 
-        // boton "Agregar" que agrega productos
-        const botonAgregar = document.getElementById(`agregar${element.nombreComercial}`)
-        botonAgregar.addEventListener(`click`, () => {
-            agregarMedicamento(element.nombreComercial)
+            // boton "Agregar" que agrega productos
+            const botonAgregar = document.getElementById(`agregar${element.nombreComercial}`)
+            botonAgregar.addEventListener(`click`, () => {
+                agregarMedicamento(element.nombreComercial)
+            })
         })
-    })
-}
 
-mostrarProductos(medicamentosEnVenta)
+    })
+    .catch(error => console.log(error))
+    .finally(() => console.log("proceso finalizado"));
 
 
 //funcion para mostrar carrito
@@ -227,56 +230,91 @@ const slider1 = document.getElementById("slider1")
 const slider2 = document.getElementById("slider2")
 const slider3 = document.getElementById("slider3")
 
-const images1 = ["slider5.jpg", "slider6.jpg"]
+const images1 = ["slider1.jpg", "slider2.jpg", "slider3.jpg"]
 let indexImages1 = 0
 
 const cambiarImg1 = function () {
     slider1.src = `./images/${images1[indexImages1]}`
-    if (indexImages1 < 1) {
+    if (indexImages1 < 2) {
         indexImages1++
     } else {
         indexImages1 = 0
     }
 }
 cambiarImg1();
-setInterval(cambiarImg1, 3000)
+setInterval(cambiarImg1, 2500)
 
 
-const images2 = ["slider1.jpg", "slider2.jpg"]
+const images2 = ["slider4.jpg", "slider5.jpg", "slider6.jpg"]
 let indexImages2 = 0
 
 const cambiarImg2 = function () {
     slider2.src = `./images/${images2[indexImages2]}`
-    if (indexImages2 < 1) {
+    if (indexImages2 < 2) {
         indexImages2++
     } else {
         indexImages2 = 0
     }
 }
 cambiarImg2();
-setInterval(cambiarImg2, 3000)
+setInterval(cambiarImg2, 2500)
 
 
-const images3 = ["slider3.jpg", "slider4.jpg"]
+const images3 = ["slider7.jpg", "slider8.jpg", "slider9.jpg"]
 let indexImages3 = 0
 
 const cambiarImg3 = function () {
     slider3.src = `./images/${images3[indexImages3]}`
-    if (indexImages3 < 1) {
+    if (indexImages3 < 2) {
         indexImages3++
     } else {
         indexImages3 = 0
     }
 }
 cambiarImg3();
-setInterval(cambiarImg3, 3000);
+setInterval(cambiarImg3, 2500);
 
 
+//fetch : dolar blue
+const criptoYa1 = "https://criptoya.com/api/dolar";
+let divDolar = document.getElementById("divDolar")
+
+const definirCambioDolar = () => {
+    fetch(criptoYa1)
+        .then(response => response.json())
+        .then(({
+            blue
+        }) => {
+            divDolar.innerHTML = `           
+            <p>Dolar: $${blue}</p>`
+        })
+        .catch((error) => console.error(error))
+}
+setInterval(definirCambioDolar, 2000)
+
+
+//fetch : btc
+const criptoYa2 = "https://criptoya.com/api/argenbtc/btc/ars/0.5";
+let divBitcoin = document.getElementById("divBitcoin")
+
+const definirCambioBitcoin = () => {
+    fetch(criptoYa2)
+        .then(response => response.json())
+        .then(({
+            totalBid
+        }) => {
+            divBitcoin.innerHTML = `           
+            <p>Bitcoin: $${totalBid}</p>`
+        })
+        .catch((error) => console.error(error))
+}
+
+setInterval(definirCambioBitcoin, 2000)
 
 //FINALIZACION DE LA COMPRA
 
-// const botonFinalizarCompra = document.getElementById('botonFinalizarCompra')
-// botonFinalizarCompra.addEventListener("click", () => {
+const botonFinalizarCompra = document.getElementById('botonFinalizarCompra')
+botonFinalizarCompra.addEventListener("click", () => {})
 
 // //ventana modal. css: formulario
 //     carroCompras.length = 0

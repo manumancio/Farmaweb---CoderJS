@@ -6,13 +6,14 @@
 }
 
 body {
-    background-color: #ecf1f7;
+    background-color: #F7F6DC;
     font-family: Roboto;
+
 }
 
 /* logo */
 .navbar-brand {
-    color: #58974f;
+    color: #7FB77E;
     font-size: 1.8rem;
     padding-left: 3rem;
 }
@@ -44,7 +45,7 @@ body {
 
 .bi-shop-window:hover,
 .bi-search--nav:hover {
-    color:rgba(0, 0, 0, 0.7)
+    color: rgba(0, 0, 0, 0.7)
 }
 
 
@@ -63,6 +64,7 @@ body {
 .hero {
     background-image: url("../images/header7-2.jpg");
     height: 70vh;
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: end;
@@ -76,7 +78,7 @@ body {
 }
 
 .hero__title span {
-    color: #58974f
+    color: #7FB77E
 }
 
 .hero__subtitle {
@@ -96,17 +98,17 @@ body {
 .buscador-div-item {
     display: flex;
     justify-content: space-around;
-    
-     flex-wrap: wrap;
-   
+
+    flex-wrap: wrap;
+
 }
 
 .displayCoincidenciasItem {
-   
-  margin: 1rem ; 
-  padding: 25px 0;
-  border-radius: 10px;
-  background-color: #57974f5d;
+
+    margin: 1rem;
+    padding: 25px 0;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .buscador-div-container {
@@ -116,8 +118,10 @@ body {
     width: 80vw;
     margin: 0 auto;
 }
+
 .buscador-div {
-    text-align: center;      
+    text-align: center;
+    padding: 2rem;
 }
 
 .buscador {
@@ -134,19 +138,22 @@ body {
 
 /* seccion ventajas */
 .ventajas-container {
-    margin-top: 50px;
+
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
+    padding: 4rem 0;
 }
 
 .ventajas__item {
-    width: 16%;
+    width: 15%;
+   
 }
 
 .ventajas__icon {
     font-size: 3.2rem;
-    color: #58974f;
+    color: #7FB77E;
 }
 
 .ventajas__title {
@@ -154,12 +161,13 @@ body {
 }
 
 /* slider */
-.div-ofertas { 
+.div-ofertas {
     padding: 2rem;
-    background-color: #9ff89346
+    background-color: #FFC090
 }
+
 .slider-container {
-    padding: 2rem auto;      
+    padding: 2rem auto;
     text-align: center;
 }
 
@@ -167,10 +175,13 @@ body {
     text-align: center;
     padding: 1rem;
 }
+
 .slider-img {
-width: 25vw;
-border-radius: 10px;
+    width: 25vw;
+    margin: 0.1rem;
+    border-radius: 8px;
 }
+
 
 
 /* <-------------- SECCION E-COMMERCE DE FARMAWEB ---------------> */
@@ -178,14 +189,16 @@ border-radius: 10px;
 
 .shop-section {
     margin: 0 auto;
-     background-color: #ecf1f7;
+    background-color: #B1D7B4;
+    padding: 2rem 0;
 }
 
 .shop-section__title {
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-    margin: 100px 0 50px;
+
+    padding: 2rem;
 }
 
 .shop-section__subtitle {
@@ -196,7 +209,7 @@ border-radius: 10px;
 }
 
 .card {
-    display: flex;    
+    display: flex;
     justify-content: stretch;
     gap: 20px;
     padding: 15px;
@@ -207,39 +220,48 @@ border-radius: 10px;
     text-align: center;
 }
 
-
+.btn-success-agregar {
+    margin: 0 auto;
+}
 
 .shop-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;   
-    justify-content: center; 
-    align-items: center;   
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
     margin: 40px;
 }
 
 /* compra final/carro de compras */
 
 .section-carroComprasFinal {
-    margin-top: 50px;    
+    margin-top: 50px;
 }
 
 .carroCompras-container p {
     display: inline-block;
     font-size: 1.1rem;
- 
+
+}
+
+.carroCompras-final {
+    padding: 2rem;
+    margin: 0 3rem;
 }
 
 .carroCompras-final-item {
-    margin-left: 2rem;
+
+    padding-top: 0.2rem;
 }
+
 .carroCompras-container button {
     border: none;
     background-color: inherit;
 }
 
 .productosEnElCarrito {
-   border-bottom: 1px solid #57974f17;
+    border-bottom: 1px solid #57974f17;
     display: flex;
     justify-content: space-evenly;
     margin: 0.5rem;
@@ -247,11 +269,11 @@ border-radius: 10px;
 
 .productosCarrito-item--title {
     font-weight: 700;
-    border-bottom: 1px solid #000 ;
+    border-bottom: 1px solid #000;
 }
 
 .productosCarrito-item {
-width:6vw;
+    width: 6vw;
 }
 
 .btn-container {
@@ -261,62 +283,40 @@ width:6vw;
 }
 
 .btn-signo {
-    color: hsla(113, 31%, 45%, 0.527);
-    border: #58974f;
-    font-size:1.4rem;   
+    color: hsla(113, 31%, 45%, 0.877);
+    border: #7FB77E;
+    font-size: 1.4rem;
     padding: 3px 5px;
 }
+
 .numero-cantidad {
     margin: auto 0;
     padding: 0 3px;
     align-items: center;
 }
+
 .bi-trash3 {
     font-size: 1.4rem;
     color: rgb(247, 40, 40);
 }
 
-/*<-------------- SECCION MAS SALUD-RESERVA DE TURNO ----------->*/
-
-/* 
-.reservas-section {
-    margin-top: 150px;
-    text-align: center;
-    background-color: #57974f10;
-    width: 100vw;
+.tipoCambio {
+    display: flex;
+    background-color: rgba(87, 151, 79, 0.3);
 }
 
-.reservas-section__title {
-    font-size: 2.8rem;
-    font-weight: 700;
-    text-align: center;
-    padding-top: 30px;
+.tipoCambio p {
+    padding: 0 10px;
+    margin: 0;
 }
 
-.reservas-section__subtitle {
-    font-size: 1.4rem;
-    padding: 70px 5px 20px;
-    padding-left: 3rem;
-    color: #58974f;
-}
-
-.turnos-container-radio label {
-    padding: 5px 20px;
-    font-size: 1.2rem;
-}
-
-.turnos-container-radio label input {
-    margin: 10px;
-}
-
-.turnos-container-dia input {
-    margin: 10px 30px;
-    padding: 10px;
-    font-size: 1.1rem;
+.tipoCambio h5{
+    margin: 0;
+    padding: 0;
 }
 
 .turnos-container-datos label {
-    padding: 0 20px;
+    padding: 0 2px;
     font-size: 1.2rem;
 }
 
@@ -339,26 +339,92 @@ width:6vw;
     background-color: #ecf1f7;
     color: #58974f;
 
+}
+
+/*FINALIZACION DE LA COMPRA*/
+
+.finalizarCompra {
+    width: 70%;
+    margin: 1rem auto;
+    background-color: #B1D7B4;
+   
+}
+/* 
+.finalizarCompra-hidden{
+    display: none;
 } */
+.finalizarCompra-div{
+    padding: 1.5rem;
+}
+
+.finalizarCompra-div h4{
+   text-align: center;
+   padding: 1rem;
+}
+
+.finalizarCompra-div--tarjeta {
+    padding: 4rem;
+}
+
+.finalizarCompra-container {
+    display: grid;
+}
+
+.finalizarCompra-container input {
+margin: 10px;
+padding: 5px 20%;
+}
+
+.finalizarCompra-container--datosPersonales {
+    grid-template-areas: "userNombre userApellido"
+                         "userEmail userTelefono";
+}
+
+#userNombre {
+    grid-area: userNombre;
+}
+
+#userApellido {
+    grid-area: userApellido;
+}
+
+#userEmail {
+    grid-area: userEmail;
+}
+
+#userTelefono {
+    grid-area: userTelefono;
+}
+
+.finalizarCompra-container--tarjeta {
+    grid-template-areas: "tarjetaNumero tarjetaNumero"
+                        "tarjetaTitular tarjetaVencimiento"
+                        "tarjetaCodigo tarjetaCuotas";
+}
+
+#tarjetaNumero{
+    grid-area: tarjetaNumero;
+}
+#tarjetaTitular{
+    grid-area: tarjetaTitular;
+}
+#tarjetaVencimiento{
+    grid-area: tarjetaVencimiento;
+}
+#tarjetaCodigo{
+    grid-area: tarjetaCodigo;
+}
+#tarjetaCuotas{
+    grid-area: tarjetaCuotas;
+    margin: 1rem;
+}
+
+.btn-dark--final {
+    margin: 0 auto;
+}
 
 /* footer */
 footer {
-    background-color: #57974f4f;
-
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 50px;
-}
-
-footer h4 {
-    text-align: center;
-}
-
-footer li {
-    list-style: none;
-    padding: 3px;
-    color: rgba(0, 0, 0, 0.6)
+    background-color: #7FB77E;
+    padding: 2rem 0;
 }
