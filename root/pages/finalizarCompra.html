@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- optimizacion del seo -->
+    <meta name="description"
+        content="FarmaWeb es una Empresa destinada a la provisión de medicamentos y productos para la salud a través de compras online">
+    <meta name="keyword"
+        content="FARMACIA, E-COMMERCE, MEDICAMENTOS, COMPRA, DELIVERY, ENVIOS, FARMACOS, CREMAS, PRODUCTOS MEDICOS, SALUD">
+
+    <!--  Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!--  Fontfamily -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+
+    <!--  Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!--  Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!--  CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <title>FarmaWeb | Tu Farmacia</title>
+</head>
+
+<body>
+    <header>
+        <!--  nav -->
+        <nav class="navbar pb-1 pt-0 bg-light fixed-top">
+            <div class="top-nav">
+                <h3>Hasta 3 cuotas sin interés ¡Envío gratis! Rosario desde $5500</h3>
+            </div>
+            <div class="container-fluid pt-3 pb-4">
+                <a class="navbar-brand" href="../index.html">FarmaWeb</a>
+
+                <div>
+                    <button id="botonCarroCompras" class="shop-icon" href="#resultadosCompra"><i
+                            class="bi bi-shop-window"><span id="contadorCarroCompras">0</span></i></button>
+
+                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                </div>
+                <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="navbar-brand"
+                                href="index.html">FarmaWeb</a></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#salud">Salud | Medicamentos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#belleza">Belleza</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#bebes-maternidad">Bebés y Maternidad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#cuidado-personal">Cuidado Personal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#reservas">Más Salud | <b>Reservá
+                                        tu turno</b></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+            <div class="bottom-nav">
+                <ul class="bottom-nav-container">
+                    <li class="bottom-nav-item">
+                        <a class="bottom-nav-link" href="../index.html#salud">Salud</a>
+                    </li>
+                    <li class="bottom-nav-item">
+                        <a class="bottom-nav-link" href="#belleza">Dermocosmética</a>
+                    </li>
+                    <li class="bottom-nav-item">
+                        <a class="bottom-nav-link" href="#belleza">Perfumes</a>
+                    </li>
+                    <li class="bottom-nav-item">
+                        <a class="bottom-nav-link" href="#bebes-maternidad">Bebés y Maternidad</a>
+                    </li>
+                    <li class="bottom-nav-item">
+                        <a class="bottom-nav-link" href="#cuidado-personal">Cuidado Personal</a>
+                    </li>
+                    <li class="bottom-nav-item">
+                        <a class="bottom-nav-link active" aria-current="page" href="#reservas">Más Salud | <b>Reservá
+                                tu turno</b></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="compraFinal-main">
+        <h2 class="compraFinal-title">Finalizar Compra</h2>
+        <div class="compraFinal-container">
+            <!-- formulario -->
+            <section class="compraFinal-item">
+                <form action="" method="get" enctype="text/plain">
+                    <fieldset>
+                        <div class="finalizarCompra">
+                            <div class="finalizarCompra-div">
+                                <h4>Datos personales</h4>
+                                <div class="finalizarCompra-container finalizarCompra-container--datosPersonales">
+                                    <div>
+                                        <label for="userNombre">Nombre:</label>
+                                        <input class="finalizarCompra-input" type="text" name="userNombre"
+                                            id="userNombre" required>
+                                    </div>
+                                    <div>
+                                        <label for="userApellido">Apellido:</label>
+                                        <input class="finalizarCompra-input" type="text" name="userApellido"
+                                            id="userApellido" required>
+                                    </div>
+                                    <div>
+                                        <label for="userDni">DNI:</label>
+                                        <input class="finalizarCompra-input" type="text" name="userDni" id="userDni"
+                                            required>
+                                    </div>
+                                    <div>
+                                        <label for="userDireccion">Dirección:</label>
+                                        <input class="finalizarCompra-input" type="text" name="userDireccion"
+                                            id="userDireccion" required>
+                                    </div>
+                                    <div>
+                                        <label for="userEmail">E-mail:</label>
+                                        <input class="finalizarCompra-input" type="email" name="userEmail"
+                                            id="userEmail">
+                                    </div>
+                                    <div>
+                                        <label for="userTelefono">Teléfono:</label>
+                                        <input class="finalizarCompra-input" type="tel" name="userTelefono"
+                                            id="userTelefono">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="finalizarCompra-div">
+                                <h4>Ingresá los datos de tu tarjeta</h4>
+                                <div class="finalizarCompra-container finalizarCompra-container--formaPago">
+                                    <div>
+                                        <label for="">Número de tarjeta:</label>
+                                        <input class="finalizarCompra-input" type="text" name="tarjetaNumero"
+                                            id="tarjetaNumero" required>
+                                    </div>
+                                    <div>
+                                        <label for="">Nombre del titular:</label>
+                                        <input class="finalizarCompra-input" type="text" name="tarjetaTitular"
+                                            id="tarjetaTitular" required>
+                                    </div>
+                                    <div>
+                                        <label for="">Fecha de vencimiento:</label><input class="finalizarCompra-input"
+                                            type="text" name="tarjetaVencimiento" id="tarjetaVencimiento" required>
+                                    </div>
+                                    <div>
+                                        <label for="">Código de seguridad:</label>
+                                        <input class="finalizarCompra-input" type="text" name="tarjetaCodigo"
+                                            id="tarjetaCodigo" required>
+                                    </div>
+                                    <div>
+                                        <label for="tarjetaCuotas">Cantidad de cuotas:</label>
+                                        <select name="tarjetaCuotas" id="tarjetaCuotas">
+                                            <option value="">1 pago sin interés de $<span id="pagoUnaCuota"></span></option>
+                                            <option value="">3 pagos sin interés de $<span id="pagoTresCuota"></span></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Al continuar acepta nuestros <span>Términos y Condiciones</span></h5>
+                            <button id="botonFinalizarCompra" class="btn btn-dark btn-dark--final p-2"
+                                type="button">Finalizar Compra</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- carro de compras -->
+            <section class="compraFinal-item ">
+                <div id="resultadosCompra" class="section-carroComprasFinal">
+                    <div id="contenedorCarroCompras" class="carroCompras-container">
+                        <!-- genera nuevos div -->
+                    </div>
+
+                    <button id="vaciarCarroCompras" class="btn btn-danger p-1">Vaciar Carrito
+                    </button>
+
+                    <div class="carroCompras-descripcionPrecio">
+                        <p class="carroCompras-descripcionPrecio-item">Precio de productos: $ <span
+                                id="precioTotal"></span></p>
+
+                        <p class="carroCompras-descripcionPrecio-item"><b>Precio con descuento: $ </b><span
+                                id="precioConDescuento"></span>
+                        </p>
+
+                        <p class="carroCompras-descripcionPrecio-item carroCompras-descripcionPrecio-item--active">
+                            TOTAL: $ <span id="precioFinal"></span></p>
+
+                        <p class="carroCompras-descripcionPrecio-item carroCompras-descripcionPrecio-item--cuotas">O
+                            hasta <b>3</b> cuotas sin interés de $ <b><span id="precioEnCuotas"></span></b></p>
+
+                        <button id="botonIniciarCompra" class="btn btn-dark btn-dark--finalizarCompra m-1 px-4">Iniciar
+                            Compra
+                        </button>
+                    </div>
+                    <div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+    </main>
+
+    <!--  footer -->
+    <footer>
+        <div>
+            <section>
+                <div>
+                    <h5 class="px-5">FarmaWeb | Manuela Mancione</h5>
+                </div>
+            </section>
+        </div>
+    </footer>
+
+    <!--  Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+
+    <!-- sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!--  javascript -->
+    <script src="../js/products.js"></script>
+    <script src="../js/main.js"></script>
+
+
+</body>
+
+</html>

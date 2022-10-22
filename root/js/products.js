@@ -48,4 +48,3 @@ medicamentosEnVenta.push(naproxeno);
 medicamentosEnVenta.push(tafirol);
 medicamentosEnVenta.push(tafirolPediatrico);
 medicamentosEnVenta.push(geniol);
-
