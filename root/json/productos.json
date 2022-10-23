@@ -1,84 +1,84 @@
 [{
     "nombreComercial": "Actron",
     "nombreGenerico": "Ibuprofeno 400 mg",
-    "precio": 110,
+    "precio": 1100,
     "stock": 1000,
     "imagen": "./images/rsz_actron.png",
     "cantidad": 1
 }, {
     "nombreComercial": "Actron Mujer Forte",
     "nombreGenerico": "Ibuprofeno 400 mg",
-    "precio": 110,
+    "precio": 1100,
     "stock": 1100,
     "imagen": "./images/rsz_actronMujer.png",
     "cantidad": 1
 }, {
     "nombreComercial": "Actron Pediátrico",
     "nombreGenerico": "Ibuprofeno 2%",
-    "precio": 110,
+    "precio": 1100,
     "stock": 1000,
     "imagen": "./images/rsz_actronPediatrico.png",
     "cantidad": 1
 }, {
     "nombreComercial": "Ibupirac",
     "nombreGenerico": "Ibuprofeno 400 mg",
-    "precio": 120,
+    "precio": 1200,
     "stock": 1500,
     "imagen": "./images/rsz_ibupirac.png",
     "cantidad": 1
 }, {
     "nombreComercial": "Ibuevanol Forte",
     "nombreGenerico": "Ibuprofeno 400 mg",
-    "precio": 125,
+    "precio": 1250,
     "stock": 500,
     "imagen": "./images/rsz_ibuevanolForte.png",
     "cantidad": 1
 }, {
     "nombreComercial": "Bayaspirina",
     "nombreGenerico": "Aspirina 500 mg",
-    "precio": 100,
+    "precio": 1000,
     "stock": 1200,
     "imagen": "./images/rsz_bayaspirina.jpg",
     "cantidad": 1
 }, {
     "nombreComercial": "Aspirinetas",
     "nombreGenerico": "Aspirina 100 mg",
-    "precio": 105,
+    "precio": 1050,
     "stock": 500,
     "imagen": "./images/rsz_aspirineta.jpg",
     "cantidad": 1
 }, {
     "nombreComercial": "Novalgina",
     "nombreGenerico": "Dipirona 500 mg",
-    "precio": 115,
+    "precio": 1150,
     "stock": 500,
     "imagen": "./images/rsz_novalgina.jpg",
     "cantidad": 1
 }, {
     "nombreComercial": "Naproxeno Laproff",
     "nombreGenerico": "Naproxeno 500 mg",
-    "precio": 135,
+    "precio": 1350,
     "stock": 500,
     "imagen": "./images/rsz_naproxeno.png",
     "cantidad": 1
 }, {
     "nombreComercial": "Tafirol",
     "nombreGenerico": "Paracetamol 500 mg",
-    "precio": 90,
+    "precio": 900,
     "stock": 1000,
     "imagen": "./images/rsz_tafirol.jpg",
     "cantidad": 1
 }, {
     "nombreComercial": "Tafirol Pediátrico",
     "nombreGenerico": "Paracetamol 120mg/5ml",
-    "precio": 145,
+    "precio": 1450,
     "stock": 500,
     "imagen": "./images/rsz_tafirolPediatrico.jpg",
     "cantidad": 1
 }, {
     "nombreComercial": "Geniol",
     "nombreGenerico": "Paracetamol 500 mg",
-    "precio": 90,
+    "precio": 900,
     "stock": 500,
     "imagen": "./images/rsz_geniol.png",
     "cantidad": 1

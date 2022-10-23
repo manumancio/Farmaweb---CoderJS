@@ -301,7 +301,7 @@ p {
 .carrito-OffCanvas {
     width: 45vw;
     transform: translateY(-800%);
-    
+
     transition: all .3s;
 
     position: absolute;
@@ -433,6 +433,13 @@ p {
     color: rgb(247, 40, 40);
 }
 
+.siNoHizoCompra--title {
+    padding: 5px;
+    text-align: center;
+    color: rgb(209, 22, 22);
+
+}
+
 /* footer */
 footer {
     background-color: #7FB77E;
@@ -441,7 +448,7 @@ footer {
 
 
 
-.banner-div{
+.banner-div {
     width: 100%;
     object-fit: cover;
     height: 15rem;
@@ -451,6 +458,7 @@ footer {
     width: 100%;
     object-fit: cover;
 }
+
 /* FINALIZARCOMPRA.HTML */
 
 .compraFinal-title {
@@ -463,7 +471,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 5rem 0 5rem;
+    margin: 10rem 0 5rem;
 }
 
 .compraFinal-item {
@@ -511,19 +519,10 @@ footer {
 
 .finalizarCompra-container--datosPersonales {
     display: grid;
+
     grid-template-areas: "userNombre userApellido"
         "userEmail userTelefono";
 }
-
-.finalizarCompra-container--formaPago {
-    display: grid;
-    grid-template-areas: "tarjetaNumero"
-        "tarjetaTitular"
-        "tarjetaVencimiento tarjetaCodigo"
-        "tarjetaCuotas";
-}
-
-
 
 #userNombre {
     grid-area: userNombre;
@@ -540,10 +539,6 @@ footer {
 #userTelefono {
     grid-area: userTelefono;
 }
-
-
-/* CORREGIR, NO FUNCIONA GRID!!!! */
-
 
 
 #tarjetaNumero {
@@ -564,7 +559,26 @@ footer {
 
 #tarjetaCuotas {
     grid-area: tarjetaCuotas;
-    margin: 1rem;
+
+}
+
+.div-finalizarCompra {
+    grid-area: div-finalizarCompra;
+}
+
+.div-finalizarCompra h5 {
+    padding-top: 1rem;
+}
+.finalizarCompra-container--formaPago {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "tarjetaNumero tarjetaNumero "
+        "tarjetaTitular tarjetaTitular "
+        "tarjetaVencimiento tarjetaCodigo "
+        "tarjetaCuotas tarjetaCuotas"
+        "div-finalizarCompra div-finalizarCompra";
 }
 
 

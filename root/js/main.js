@@ -85,7 +85,8 @@ const carroCompras = [];
 //funcion si carro de compras esta vacio
 const siCarritoVacio = () => {
     if (carroCompras.length === 0) {
-        contenedorCarroCompras.innerHTML += `<h4>Tu carrito de compras está vacío</h4>`
+        contenedorCarroCompras.innerHTML += `<h4>Tu carrito de compras está vacío.</h4>`
+        localStorage.removeItem('carroCompras')
     }
 }
 
@@ -127,7 +128,7 @@ fetch(productos)
         })
     })
     .catch(error => console.log(error))
-    .finally(() => console.log("Proceso finalizado"));
+
 
 
 //funcion para actualizar carrito
@@ -167,6 +168,12 @@ const actualizarCarrito = (array) => {
 
 
         localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
+        if (carroCompras.length === 0) {
+            localStorage.removeItem('carroCompras')
+        }
+
+        siNoHizoCompra.innerHTML = ''; //para reiniciar
+        siNoHizoNingunaCompra.innerHTML = ''; //para reiniciar
 
 
     })
@@ -194,19 +201,21 @@ const actualizarCarrito = (array) => {
     const precioEnCuotas = document.getElementById(`precioEnCuotas`)
     precioEnCuotas.innerText = (precioTotalCalculoConDescuento / 3).toFixed(2)
 
-    // //mostrar cuotas: 1   
-    // const pagoUnaCuota = document.getElementById(`pagoUnaCuota`)
-    // pagoUnaCuota.innerText = (precioTotalCalculo - precioTotalCalculo * 0.2).toFixed(2)
 
-    // //mostrar cuotas: 3   
-    // const pagotresCuotas = document.getElementById(`pagotresCuotas`)
-    // pagotresCuotas.innerText = ((precioTotalCalculo - precioTotalCalculo * 0.2) / 3).toFixed(2)
-
+    //mostrar valor de un pago y tres cuotas
+    const tarjetaCuotas = document.getElementById(`tarjetaCuotas`)
+    tarjetaCuotas.innerHTML = ``;
+    //una cuota
+    const option = document.createElement('option');
+    option.value = "unaCuota";
+    option.text = `1 pago sin interés de $ ${precioTotalCalculoConDescuento}`
+    //tres cuotas
+    const option2 = document.createElement('option');
+    option2.value = "tresCuota";
+    option2.text = `3 pagos sin interés de $ ${(precioTotalCalculoConDescuento / 3).toFixed(2)}`
+    tarjetaCuotas.append(option, option2);
 
 }
-
-// CORREGIR: 1-3 cotas formulario
-
 
 // para obtener la info del local storage
 document.addEventListener('DOMContentLoaded', () => {
@@ -237,19 +246,22 @@ const eliminarMedicamento = medicamentoABorrar => {
 }
 
 //funcion para vaciar el carro de compras
-const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
-vaciarCarroCompras.addEventListener("click", () => {
+const vaciarCarrito = () => {
     carroCompras.length = 0
     actualizarCarrito(carroCompras)
     siCarritoVacio()
-})
+    localStorage.removeItem('carroCompras')
+}
+
+const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
+vaciarCarroCompras.addEventListener("click", vaciarCarrito)
 
 
 
 
 
 
-//corregir: local storage, despues de vaciar carrito
+
 
 
 // funcion para agregar medicamento
@@ -301,7 +313,7 @@ const aparecerModal = () => {
     modalItem.classList.add('modalActivo')
 }
 
-setTimeout(aparecerModal, 4000)
+setTimeout(aparecerModal, 5000)
 
 const cerrarModal = () => {
     modalItem.classList.remove('modalActivo')
@@ -317,6 +329,7 @@ const botonCierreOffCanvas = document.getElementById("botonCierreOffCanvas");
 const abrirOffCanvas = () => {
     carritoOffCanvas.classList.toggle('offCanvasActivo');
     siCarritoVacio()
+
 }
 
 const cerrarOffCanvas = () => {
@@ -332,46 +345,48 @@ botonCierreOffCanvas.addEventListener("click", cerrarOffCanvas);
 
 const botonIniciarCompra = document.getElementById('botonIniciarCompra')
 const checkout = document.getElementById('checkout')
+const siNoHizoCompra = document.getElementById('siNoHizoCompra')
+siNoHizoCompra.innerHTML = ''; //para reiniciar
 
 botonIniciarCompra.addEventListener("click", () => {
-    cerrarOffCanvas()
-    location.href = './index.html#irCheckout'
+    if (carroCompras.length === 0) {
+        siNoHizoCompra.innerHTML = ''; //para reiniciar
+        const tituloNoHayCompra = document.createElement('tituloNoHayCompra')
+        tituloNoHayCompra.classList.add('siNoHizoCompra--title')
+        tituloNoHayCompra.innerHTML = `<h5>No ha seleccionado ningún producto para comprar.</h5>`
+        siNoHizoCompra.appendChild(tituloNoHayCompra)
+        localStorage.removeItem('carroCompras')
+    } else {
+        cerrarOffCanvas()
+        actualizarCarrito(carroCompras)
+        location.href = './index.html#irCheckout'
+    }
 })
-
-
-
-
-
-
-
-
-
-carroCompras.forEach((element) => {
-
-    //mostrar cuotas: 1   
-    const pagoUnaCuota = document.getElementById(`pagoUnaCuota`)
-    pagoUnaCuota.innerText = carroCompras.reduce((acumulador, element) => acumulador + (element.cantidad * element.precio * 0.8), 0).toFixed(2)
-
-    //mostrar cuotas: 3   
-    const pagoTresCuotas = document.getElementById(`pagoTresCuotas`)
-    pagoTresCuotas.innerText = (carroCompras.reduce((acumulador, element) => acumulador + (element.cantidad * element.precio * 0.8), 0) / 3).toFixed(2)
-})
-
 
 
 
 const botonFinalizarCompra = document.getElementById('botonFinalizarCompra')
+const siNoHizoNingunaCompra = document.getElementById('siNoHizoNingunaCompra')
 botonFinalizarCompra.addEventListener('click', () => {
-    carroCompras.length = 0;
-    siCarritoVacio()
 
-    Swal.fire({
-        icon: 'success',
-        title: 'Tu compra se ha realizado con Éxito!',
-        showConfirmButton: false,
-        timer: 2000
-    })
+    if (carroCompras.length === 0) {
+        siNoHizoNingunaCompra.innerHTML = ''; //para reiniciar
+        const tituloNoHayCompra = document.createElement('tituloNoHayCompra')
+        tituloNoHayCompra.classList.add('siNoHizoCompra--title')
+        tituloNoHayCompra.innerHTML = `<h5>No ha seleccionado ningún producto para comprar.</h5>`
+        siNoHizoNingunaCompra.appendChild(tituloNoHayCompra)
+        localStorage.removeItem('carroCompras')
 
+    } else {
+      vaciarCarrito()
+      
+        Swal.fire({
+            icon: 'success',
+            title: 'Tu compra se ha realizado con Éxito!',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    }
 
 })
 

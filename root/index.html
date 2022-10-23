@@ -212,30 +212,33 @@
                             TOTAL: $ <span id="precioFinal"></span></p>
 
                         <p class="carroCompras-descripcionPrecio-item carroCompras-descripcionPrecio-item--cuotas">O
-                            hasta <b>3</b> cuotas sin interés de $ <b><span  id="precioEnCuotas"></span></b></p>
+                            hasta <b>3</b> cuotas sin interés de $ <b><span id="precioEnCuotas"></span></b></p>
 
                         <button id="botonIniciarCompra" class="btn btn-dark m-1 px-4">Iniciar
                             Compra
                         </button>
+                        <div id="siNoHizoCompra">
+                            <!-- tituloNoHayCompra -->
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
 
-         <div id="irCheckout" class="banner-div">
-                <img src="./images/banner.jpg" alt="">
-            </div>
+        <div id="irCheckout" class="banner-div">
+            <img src="./images/banner.jpg" alt="">
+        </div>
 
 
         <!-- compra final -->
         <div id="checkout" class="compraFinal-main">
-           
+
 
 
             <div class="compraFinal-container">
                 <!-- formulario -->
                 <section class="compraFinal-item">
-                    <h2 class="compraFinal-title">Finalizar Compra</h2>
+                    <h2 class="compraFinal-title">Realizar pago</h2>
                     <form action="" method="get" enctype="text/plain">
                         <fieldset>
                             <div class="finalizarCompra">
@@ -276,7 +279,6 @@
                                 </div>
                                 <div class="finalizarCompra-div">
                                     <h4>Ingresá los datos de tu tarjeta</h4>
-                                    
                                     <div class="finalizarCompra-container  finalizarCompra-container--formaPago">
                                         <div>
                                             <label for="tarjetaNumero">Número de tarjeta:</label>
@@ -300,16 +302,25 @@
                                         </div>
                                         <div>
                                             <label for="tarjetaCuotas">Cantidad de cuotas:</label>
-                                            <select class="finalizarCompra-input" name="tarjetaCuotas" id="tarjetaCuotas">
-                                                <option value="">1 pago sin interés de $ <span id="pagoUnaCuota">0</span></option>
-                                                <option value="">3 pagos sin interés de $ <span id="pagoTresCuotas">0</span></option>
+
+                                            <select id="tarjetaCuotas" class="finalizarCompra-input" name="tarjetaCuotas">
+                                                <!-- <option value="">1 pago sin interés de $<span id="pagoUnaCuota">0</span></option>
+                                                <option value="">3 pagos sin interés de $<span id="pagoTresCuotas">0</span></option> -->
                                             </select>
+                                        </div>
+                                        <div class="div-finalizarCompra">
+                                            <h5>Al continuar acepta nuestros <span>Términos y
+                                                    Condiciones</span>.</h5>
+                                                   
+                                            <input id="botonFinalizarCompra" class="btn btn-dark btn-dark--final"
+                                                type="submit" value="Finalizar Compra"></input>
+                                            <div id="siNoHizoNingunaCompra">
+                                                <!-- tituloNoHayCompra -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h5 class="">Al continuar acepta nuestros <span>Términos y Condiciones</span>.</h5>
-                                <button id="botonFinalizarCompra" class="btn btn-dark btn-dark--final"
-                                    type="button">Finalizar Compra</button>
+
                             </div>
                         </fieldset>
                     </form>
