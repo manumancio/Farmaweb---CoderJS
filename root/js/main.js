@@ -1,9 +1,7 @@
 //buscador de medicamentos
-
 const displayCoincidencias = document.getElementById('displayCoincidencias');
 const buscadorMedicamentos = document.getElementById('buscadorMedicamentos');
 const btnBuscadorMedicamentos = document.getElementById('btnBuscadorMedicamentos')
-
 
 const filtrar = () => {
     displayCoincidencias.innerHTML = ''; //para reiniciar
@@ -39,7 +37,7 @@ const filtrar = () => {
     }
 }
 
-//  funcion para ir para arriba para ver display
+//  funcion para arriba para ver display
 const irArriba = () => {
     window.scrollTo({
         top: 0,
@@ -83,16 +81,6 @@ slideManualIzquierdo.addEventListener('click', cambiarImg)
 const carroCompras = [];
 
 
-//funcion si carro de compras esta vacio
-const siCarritoVacio = () => {
-    if (carroCompras.length === 0) {
-        contenedorCarroCompras.innerHTML = '';
-        contenedorCarroCompras.innerHTML += `<h4>Tu carrito de compras está vacío.</h4>`
-        localStorage.removeItem('carroCompras')
-    }
-}
-
-
 // funcion para mostrar productos
 const productsContainer = document.getElementById("productsContainer");
 
@@ -129,7 +117,6 @@ fetch(productos)
 //funcion para actualizar carrito
 const actualizarCarrito = (array) => {
     contenedorCarroCompras.innerHTML = `` //para reinicializarlo
-
     array.forEach(element => {
         const div = document.createElement('div')
         div.className = ('productosEnElCarrito')
@@ -169,7 +156,6 @@ const actualizarCarrito = (array) => {
         // siNoHizoNingunaCompra.innerHTML = ''; 
     })
 
-
     //mostrar numero de elementos en el icono de compras
     const contadorCarroCompras = document.getElementById(`contadorCarroCompras`)
     contadorCarroCompras.innerText = array.length
@@ -194,7 +180,7 @@ const actualizarCarrito = (array) => {
 }
 
 
-// para obtener la info del local storage
+// funcion para obtener la info del local storage
 document.addEventListener('DOMContentLoaded', () => {
 
     if (localStorage.getItem('carroCompras')) {
@@ -216,6 +202,16 @@ const eliminarMedicamento = medicamentoABorrar => {
     console.log(carroCompras)
     siCarritoVacio()
     actualizarCarrito(carroCompras)
+}
+
+
+//funcion si carro de compras esta vacio
+const siCarritoVacio = () => {
+    if (carroCompras.length === 0) {
+        contenedorCarroCompras.innerHTML = '';
+        contenedorCarroCompras.innerHTML += `<h4>Tu carrito de compras está vacío.</h4>`
+        localStorage.removeItem('carroCompras')
+    }
 }
 
 
@@ -256,6 +252,7 @@ const agregarMedicamento = medicamentoAAgregar => {
     }).showToast()
     actualizarCarrito(carroCompras)
 }
+
 
 // funcion para restar unidad de medicamentos 
 const restarUnidad = (medicamentoARestar) => {

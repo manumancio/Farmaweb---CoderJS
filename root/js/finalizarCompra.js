@@ -130,7 +130,6 @@ const eliminarMedicamento = medicamentoABorrar => {
     const medicamento = carroCompras.find(element => element.nombreComercial === medicamentoABorrar);
     const indice = carroCompras.indexOf(medicamento);
     carroCompras.splice(indice, 1);
-
     console.log(carroCompras)
     siCarritoVacio()
     actualizarCarrito(carroCompras)
@@ -145,7 +144,6 @@ const siCarritoVacio = () => {
     }
 }
 
-
 //funcion para vaciar el carro de compras
 const vaciarCarrito = () => {
     carroCompras.length = 0
@@ -153,7 +151,6 @@ const vaciarCarrito = () => {
     siCarritoVacio()
     localStorage.removeItem('carroCompras')
 }
-
 
 //boton para continuar comprando
 const btnContinuarComprando = document.querySelector('.continuar-comprando')
