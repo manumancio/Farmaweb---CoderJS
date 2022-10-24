@@ -12,8 +12,7 @@ const filtrar = () => {
         let nombreComercialIngresado = elemento.nombreComercial.toLowerCase();
         let nombreGenericoIngresado = elemento.nombreGenerico.toLowerCase();
 
-        if ((nombreComercialIngresado.indexOf(texto) >= 0) || (nombreGenericoIngresado.indexOf(texto) >= 0)) {
-            console.log(nombreComercialIngresado.indexOf(texto))
+        if ((nombreComercialIngresado.indexOf(texto) >= 0) || (nombreGenericoIngresado.indexOf(texto) >= 0)) {           
             let displayCoincidenciasItem = document.createElement("displayCoincidenciasItem")
             displayCoincidenciasItem.classList.add("displayCoincidenciasItem")
 
@@ -26,10 +25,7 @@ const filtrar = () => {
                     <button id="agregar${elemento.nombreComercial}" class="btn btn-success btn-success-agregar">Agregar al carrito <i class="bi bi-bag-plus"></i></button>      
                  </div> `
             displayCoincidencias.appendChild(displayCoincidenciasItem);
-
-
-            //CORREGIR :PONGO TÍTULO? RESULTADOS DE BUSQUEDA
-
+         
             // Agregar productos
             const botonAgregar = document.getElementById(`agregar${elemento.nombreComercial}`)
             botonAgregar.addEventListener(`click`, () => {
@@ -43,7 +39,7 @@ const filtrar = () => {
     }
 }
 
-//  funcion para que el buscador vaya para arriba
+//  funcion para ir para arriba para ver display
 const irArriba = () => {
     window.scrollTo({
         top: 0,
@@ -55,7 +51,6 @@ btnBuscadorMedicamentos.onclick = () => {
     irArriba();
     filtrar();
 }
-
 buscadorMedicamentos.onkeydown = () => {
     irArriba();
     filtrar();
@@ -63,6 +58,7 @@ buscadorMedicamentos.onkeydown = () => {
 
 
 //slider
+//automatico con setInterval
 const slider = document.getElementById("slider")
 const images = ["slideportada1.jpg", "slideportada2.jpg", "slideportada3.jpg"]
 let indexImages = 0
@@ -76,17 +72,12 @@ const cambiarImg = function () {
 }
 cambiarImg();
 setInterval(cambiarImg, 3000)
-
-
+//manual
 const slideManualDerecho = document.getElementById('slideManualDerecho')
 const slideManualIzquierdo = document.getElementById('slideManualIzquierdo')
+slideManualDerecho.addEventListener('click', cambiarImg)
+slideManualIzquierdo.addEventListener('click', cambiarImg)
 
-slideManualDerecho.addEventListener('click', () => {
-    cambiarImg()
-})
-slideManualIzquierdo.addEventListener('click', () => {
-    cambiarImg()
-})
 
 //array carro de compras inicial
 const carroCompras = [];
@@ -128,8 +119,6 @@ fetch(productos)
             const botonAgregar = document.getElementById(`agregar${element.nombreComercial}`)
             botonAgregar.addEventListener(`click`, () => {
                 agregarMedicamento(element.nombreComercial)
-
-
             })
         })
     })
@@ -169,7 +158,6 @@ const actualizarCarrito = (array) => {
         const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
         btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
 
-
         // para guardar los datos en el local storage
         localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
         if (carroCompras.length === 0) {
@@ -202,21 +190,9 @@ const actualizarCarrito = (array) => {
 
     //mostrar precio final en 3 cuotas
     const precioEnCuotas = document.getElementById(`precioEnCuotas`)
-    precioEnCuotas.innerText = (precioTotalCalculoConDescuento / 3).toFixed(2)
-
-    // //mostrar valor de un pago y tres cuotas en el formulario final
-    // const tarjetaCuotas = document.getElementById(`tarjetaCuotas`)
-    // tarjetaCuotas.innerHTML = ``;
-    // //una cuota
-    // const option = document.createElement('option');
-    // option.value = "unaCuota";
-    // option.text = `1 pago sin interés de $ ${precioTotalCalculoConDescuento}`
-    // //tres cuotas
-    // const option2 = document.createElement('option');
-    // option2.value = "tresCuota";
-    // option2.text = `3 pagos sin interés de $ ${(precioTotalCalculoConDescuento / 3).toFixed(2)}`
-    // tarjetaCuotas.append(option, option2);
+    precioEnCuotas.innerText = (precioTotalCalculoConDescuento / 3).toFixed(2)    
 }
+
 
 // para obtener la info del local storage
 document.addEventListener('DOMContentLoaded', () => {
@@ -230,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito(carroCompras)
 })
 
+
 // funcion para eliminar medicamento 
 const eliminarMedicamento = medicamentoABorrar => {
     const medicamento = carroCompras.find(element => element.nombreComercial === medicamentoABorrar);
@@ -241,6 +218,7 @@ const eliminarMedicamento = medicamentoABorrar => {
     actualizarCarrito(carroCompras)
 }
 
+
 //funcion para vaciar el carro de compras
 const vaciarCarrito = () => {
     carroCompras.length = 0
@@ -251,6 +229,7 @@ const vaciarCarrito = () => {
 
 const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
 vaciarCarroCompras.addEventListener("click", vaciarCarrito)
+
 
 // funcion para agregar medicamento
 const agregarMedicamento = medicamentoAAgregar => {
@@ -268,10 +247,11 @@ const agregarMedicamento = medicamentoAAgregar => {
     }
 
     Toastify({
-        text: `Se ha agregado a tu carro de compras: ${medicamentoAAgregar}`,
+        text: `Se ha agregado a tu carro de compras: 
+        ${medicamentoAAgregar}`,
         duration: 1500,
         style: {
-            background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.8))",
+            background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.6))",
         },
     }).showToast()
     actualizarCarrito(carroCompras)
@@ -291,7 +271,7 @@ const restarUnidad = (medicamentoARestar) => {
 }
 
 
-//abrir y cerrar modal y setTimeOut
+//abrir y cerrar modal / setTimeOut
 const botonCierreModal = document.getElementById("botonCierreModal")
 const modalItem = document.getElementById("modalItem")
 const aparecerModal = () => {
@@ -304,15 +284,15 @@ const cerrarModal = () => {
 }
 botonCierreModal.addEventListener("click", cerrarModal)
 
-// abrir y cerrar carro compras off-canvas
+
+// abrir y cerrar carro compras / off-canvas
 const botonCarroCompras = document.getElementById("botonCarroCompras");
 const carritoOffCanvas = document.getElementById("carritoOffCanvas");
 const botonCierreOffCanvas = document.getElementById("botonCierreOffCanvas");
 
 const abrirOffCanvas = () => {
     carritoOffCanvas.classList.toggle('offCanvasActivo');
-    siCarritoVacio();
-   
+    siCarritoVacio();   
 }
 
 const cerrarOffCanvas = () => {
@@ -344,30 +324,3 @@ botonIniciarCompra.addEventListener("click", () => {
          window.location.href = "../pages/finalizarCompra.html"
     }
 })
-
-// //boton finalizar compra
-// const botonFinalizarCompra = document.getElementById('botonFinalizarCompra')
-// const siNoHizoNingunaCompra = document.getElementById('siNoHizoNingunaCompra')
-// botonFinalizarCompra.addEventListener('click', () => {
-
-//     if (carroCompras.length === 0) {
-//         siNoHizoNingunaCompra.innerHTML = ''; //para reiniciar
-//         const tituloNoHayCompra = document.createElement('tituloNoHayCompra')
-//         tituloNoHayCompra.classList.add('siNoHizoCompra--title')
-//         tituloNoHayCompra.innerHTML = `<h5>No ha seleccionado ningún producto para comprar.</h5>`
-//         siNoHizoNingunaCompra.appendChild(tituloNoHayCompra)
-//         localStorage.removeItem('carroCompras')
-
-//     } else {
-//         vaciarCarrito()
-//         Swal.fire({
-//             icon: 'success',
-//             title: 'Tu pago se ha realizado con Éxito!',
-//             showConfirmButton: false,
-//             timer: 2500
-//         })
-//     }
-// })
-
-
-//CORREGIR FINAL DE CARRO

@@ -54,10 +54,10 @@
                     </div>
                 </div>
 
+                <!-- nav -->
                 <div class="nav-responsive">
                     <button id="botonCarroCompras" class="shop-icon"><i class="bi bi-shop-window"><span
                                 id="contadorCarroCompras">0</span></i></button>
-
                     <button class="navbar-toggler navbar-toggler--activo" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
@@ -88,7 +88,6 @@
                                 <a class="nav-link active" aria-current="page" href="#reservas">Más Salud | <b>Reservá
                                         tu turno</b></a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -122,39 +121,30 @@
             <div id="displayCoincidencias" class="buscador-div-item ">
                 <!-- genera los divs nuevos del buscador  -->
             </div>
-
-
         </div>
-
 
         <!--  hero // slider -->
         <div>
             <div class="slider-manual-container">
                 <img id="slider" class="slider-img" alt="medicamentos en promoción">
-
                 <div class="slider-div">
-
                     <button id="slideManualDerecho" class="slider-manual-btn-derecho slider-manual-btn"><i
                             class="bi bi-caret-right-fill slider-manual-btn__icon"></i></i></button>
-
                     <button id="slideManualIzquierdo" class="slider-manual-btn-izquierdo slider-manual-btn"><i
                             class="bi bi-caret-left-fill slider-manual-btn__icon"></i></button>
                 </div>
-
             </div>
-
         </div>
     </header>
 
     <main id="main">
-        <!-- modal // setTimeOut -->
 
+        <!-- modal // setTimeOut -->
         <div id="modalItem" class="modal-item">
             <button id="botonCierreModal"><i class="bi bi-x-circle"></i></button>
-            <img src="./images/modal-img.jpg" alt="Delivery en Rosario a partir de $5500">
+            <img src="./images/modal.jpg" alt="Delivery en Rosario a partir de $5500">
             <h4>Sumá productos a tu carrito y ganate el envío <b>GRATIS</b></h4>
         </div>
-
 
         <!--  seccion ventajas -->
         <section id="salud" class="ventajas-container">
@@ -180,11 +170,6 @@
             </div>
         </section>
 
-
-
-        <!-------------- SECCION E-COMMERCE DE FARMAWEB --------------->
-
-
         <!--  seccion shop -->
         <section class="shop-section">
             <h3 class="shop-section__title">Salud - Medicamentos</h3>
@@ -196,9 +181,7 @@
             </div>
         </section>
 
-
         <!-- seccion carro compras // offcanvas-->
-
         <div class="carrito-OffCanvas " id="carritoOffCanvas">
             <section class="carrito-OffCanvas-header">
                 <h5>Carrito de compras</h5>
@@ -207,30 +190,20 @@
             <section class="carrito-OffCanvas-body">
                 <div id="resultadosCompra" class="section-carroComprasFinal">
                     <div id="contenedorCarroCompras" class="carroCompras-container">
-
                         <!-- genera nuevos div -->
                     </div>
-
                     <button id="vaciarCarroCompras" class="btn btn-danger p-1">Vaciar Carrito
                     </button>
-
                     <div class="carroCompras-descripcionPrecio">
                         <p class="carroCompras-descripcionPrecio-item">Precio de productos: $ <span
                                 id="precioTotal"></span></p>
-
                         <p class="carroCompras-descripcionPrecio-item"><b>Precio con descuento: $ </b><span
-                                id="precioConDescuento"></span>
-                        </p>
-
+                                id="precioConDescuento"></span> </p>
                         <p class="carroCompras-descripcionPrecio-item carroCompras-descripcionPrecio-item--active">
                             TOTAL: $ <span id="precioFinal"></span></p>
-
                         <p class="carroCompras-descripcionPrecio-item carroCompras-descripcionPrecio-item--cuotas">O
                             hasta <b>3</b> cuotas sin interés de $ <b><span id="precioEnCuotas"></span></b></p>
-
-                        <button id="botonIniciarCompra" class="btn btn-dark m-1 px-4">Iniciar
-                            Compra
-                        </button>
+                        <button id="botonIniciarCompra" class="btn btn-dark m-1 px-4">Iniciar Compra</button>
                         <div id="siNoHizoCompra">
                             <!-- tituloNoHayCompra -->
                         </div>
@@ -238,118 +211,15 @@
                 </div>
             </section>
         </div>
-
-        <div id="irCheckout" class="banner-div">
+        <div class="banner-div">
             <img src="./images/banner.jpg" alt="">
-        </div>
-
-
-        <!-- compra final--!>
-
-        <div id="checkout" class="compraFinal-main">
-            <div class="compraFinal-container">
-
-                <!-- formulario --
-                <section class="compraFinal-item">
-                    <h2 class="compraFinal-title">Realizar pago</h2>
-                    <form action="" method="get" enctype="text/plain">
-                        <fieldset>
-                            <div class="finalizarCompra">
-                                <div class="finalizarCompra-div">
-                                    <h4>Datos personales</h4>
-                                    <div class="finalizarCompra-container finalizarCompra-container--datosPersonales">
-                                        <div>
-                                            <label for="userNombre">Nombre:</label>
-                                            <input class="finalizarCompra-input" type="text" name="userNombre"
-                                                id="userNombre" required>
-                                        </div>
-                                        <div>
-                                            <label for="userApellido">Apellido:</label>
-                                            <input class="finalizarCompra-input" type="text" name="userApellido"
-                                                id="userApellido" required>
-                                        </div>
-                                        <div>
-                                            <label for="userDni">DNI:</label>
-                                            <input class="finalizarCompra-input" type="text" name="userDni" id="userDni"
-                                                required>
-                                        </div>
-                                        <div>
-                                            <label for="userDireccion">Dirección:</label>
-                                            <input class="finalizarCompra-input" type="text" name="userDireccion"
-                                                id="userDireccion" required>
-                                        </div>
-                                        <div>
-                                            <label for="userEmail">E-mail:</label>
-                                            <input class="finalizarCompra-input" type="email" name="userEmail"
-                                                id="userEmail" required>
-                                        </div>
-                                        <div>
-                                            <label for="userTelefono">Teléfono:</label>
-                                            <input class="finalizarCompra-input" type="tel" name="userTelefono"
-                                                id="userTelefono">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="finalizarCompra-div">
-                                    <h4>Ingresá los datos de tu tarjeta</h4>
-                                    <div class="finalizarCompra-container  finalizarCompra-container--formaPago">
-                                        <div>
-                                            <label for="tarjetaNumero">Número de tarjeta:</label>
-                                            <input class="finalizarCompra-input" type="text" name="tarjetaNumero"
-                                                id="tarjetaNumero" required>
-                                        </div>
-                                        <div>
-                                            <label for="tarjetaTitular">Nombre del titular:</label>
-                                            <input class="finalizarCompra-input" type="text" name="tarjetaTitular"
-                                                id="tarjetaTitular" required>
-                                        </div>
-                                        <div>
-                                            <label for="tarjetaVencimiento">Fecha de vencimiento:</label><input
-                                                class="finalizarCompra-input" type="text" name="tarjetaVencimiento"
-                                                id="tarjetaVencimiento" required>
-                                        </div>
-                                        <div>
-                                            <label for="tarjetaCodigo">Código de seguridad:</label>
-                                            <input class="finalizarCompra-input" type="text" name="tarjetaCodigo"
-                                                id="tarjetaCodigo" required>
-                                        </div>
-                                        <div>
-                                            <label for="tarjetaCuotas">Cantidad de cuotas:</label>
-
-                                            <select id="tarjetaCuotas" class="finalizarCompra-input"
-                                                name="tarjetaCuotas">
-                                                <!-- <option value="">1 pago sin interés de $<span id="pagoUnaCuota">0</span></option>
-                                                <option value="">3 pagos sin interés de $<span id="pagoTresCuotas">0</span></option> --
-                                            </select>
-                                        </div>
-                                        <div class="div-finalizarCompra">
-                                            <h5>Al continuar acepta nuestros <span>Términos y
-                                                    Condiciones</span>.</h5>
-
-                                            <input id="botonFinalizarCompra" class="btn btn-dark btn-dark--final"
-                                                type="submit" value="Finalizar Compra"></input>
-                                            <div id="siNoHizoNingunaCompra">
-                                                <!-- tituloNoHayCompra --
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </section>
-            </div>-->
         </div>
     </main>
 
     <!--  footer -->
     <footer>
         <div>
-            <section>
-                <div>
-                    <h5 class="p-3">FarmaWeb | Manuela Mancione</h5>
-                </div>
-            </section>
+            <h5 class="p-1 m-0">FarmaWeb | Manuela Mancione</h5>
         </div>
     </footer>
 
@@ -367,7 +237,6 @@
     <!--  javascript -->
     <script src="./js/products.js"></script>
     <script src="./js/main.js"></script>
-
 </body>
 
 </html>

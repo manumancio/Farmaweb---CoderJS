@@ -31,6 +31,14 @@ p {
     padding: 0;
 }
 
+@media (max-width:320px) {
+    .top-nav h3 {
+        padding: 2px;
+        text-align: center;
+        font-size: 1rem;
+    }
+}
+
 .navbar {
     box-shadow: 3px 3px 5px #ccc
 }
@@ -67,7 +75,7 @@ p {
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas: "navbar-brand navbar-brand";
         justify-content: center;
-        padding: 1rem;
+        padding: 0 !important;
     }
 
     .navbar-brand {
@@ -132,6 +140,18 @@ p {
     border: none;
     font-size: 2.5rem;
 }
+@media (max-width:768px) {
+      .bi-shop-window {
+          font-size: 2rem;
+      }
+}
+
+@media (max-width:320px) {
+
+    .bi-shop-window {
+        font-size: 1.8rem;
+    }
+}
 
 .bi-search--nav {
     font-size: 2rem;
@@ -159,6 +179,12 @@ p {
     flex-wrap: wrap;
 
 }
+@media (max-width:320px) {
+    .buscador-div{
+        width: 90vw;
+    }
+}
+
 
 .displayCoincidenciasItem {
     margin: 1rem;
@@ -195,17 +221,17 @@ p {
     padding: 0;
     text-align: center;
     margin: 0;
-     
+
 }
 
 .slider-img {
     width: 100%;
-    height: 22vw; 
-   
+    height: 22vw;
+
 }
 
-.slider-div{
- position: relative;
+.slider-div {
+    position: relative;
 }
 
 @media (max-width:768) {
@@ -217,27 +243,27 @@ p {
 
 .slider-manual-btn {
     border: none;
-    background-color: inherit;    
+    background-color: inherit;
     padding: 5px;
     font-size: 2rem;
 }
 
 .slider-manual-btn-derecho {
-    position: absolute;   
+    position: absolute;
     right: 2rem;
-    bottom: 9rem;   
+    bottom: 9rem;
 }
 
 .slider-manual-btn-izquierdo {
-    position: absolute;   
+    position: absolute;
     left: 2rem;
-   bottom: 9rem;       
+    bottom: 9rem;
 }
 
-.slider-manual-btn__icon{
-    color:rgba(0, 0, 0, 0.4);
-     font-weight: 600;
-     font-size: 2rem;
+.slider-manual-btn__icon {
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 
@@ -418,6 +444,8 @@ p {
 @media (max-width:1024px) {
     .shop-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        justify-content: space-around;
     }
 }
 
@@ -575,7 +603,8 @@ p {
 /* footer */
 footer {
     background-color: #7FB77E;
-    padding: 2rem 0;
+    padding: 1rem;
+
 }
 
 .banner-div {
@@ -583,17 +612,30 @@ footer {
     object-fit: cover;
     height: 15rem;
 }
+@media (max-width:320px) {
+    .banner-div{
+        height: 20vh;
+    }
+
+    .banner-div img {
+        width: 100%;
+         height: 20vh;
+        object-fit: cover;
+    }
+}
+
 
 .banner-div img {
     width: 100%;
+    height: auto;
     object-fit: cover;
 }
 
 /* FINALIZARCOMPRA.HTML */
 
-.finalizar-compra-title{
+.finalizar-compra-title {
     text-align: center;
-      margin: 14rem 2rem 1rem;
+    margin: 14rem 2rem 1rem;
 }
 
 
@@ -734,17 +776,17 @@ footer {
 
 
 /* pagina final compra finalizarcompra.html */
-.finalizar-compra-div {      
+.finalizar-compra-div {
     background-color: #fff;
     box-shadow: 1px 1px 8px rgb(231, 230, 230);
     border-radius: 10px;
-} 
+}
 
 .finalizar-compra-div--form {
     background-color: #57974f11;
 }
 
-.finalizar-compra-container{
+.finalizar-compra-container {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;

@@ -1,7 +1,5 @@
-
 // para obtener la info del local storage
 document.addEventListener('DOMContentLoaded', () => {
-
     if (localStorage.getItem('carroCompras')) {
         const almacenados = JSON.parse(localStorage.getItem('carroCompras'))
         for (items of almacenados)
@@ -14,41 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //array carro de compras inicial
 const carroCompras = [];
-
-
-// funcion para mostrar productos
-const productsContainer = document.getElementById("productsContainer");
-
-const productos = "../json/productos.json";
-fetch(productos)
-    .then(response => response.json())
-    .then(item => {
-        item.forEach(element => {
-            let card = document.createElement("div")
-            card.classList.add("card")
-            card.style = "width: 18rem;"
-            card.innerHTML = `
-                <img src="${element.imagen}" class="card-img-top" alt="Imagen ilustrativa del medicamento ${element.nombreComercial}">
-                <div class="card-body">
-                    <h5 class="card-title ">${element.nombreComercial}</h5>
-                    <p class="card-text">${element.nombreGenerico}</p>
-                    <p class="card-text card-text--price">$ ${element.precio}</p>
-                    <p class="card-text card-text--cuotas">3 cuotas sin interés de $ ${(element.precio/3).toFixed(2)}</p>
-                    <button id="agregar${element.nombreComercial}" class="btn btn-success btn-success-agregar">Agregar al carrito <i class="bi bi-bag-plus"></i></button>      
-                </div>  `
-            productsContainer.appendChild(card)
-
-            // boton "Agregar" que agrega productos
-            const botonAgregar = document.getElementById(`agregar${element.nombreComercial}`)
-            botonAgregar.addEventListener(`click`, () => {
-                agregarMedicamento(element.nombreComercial)
-
-
-            })
-        })
-    })
-    .catch(error => console.log(error))
-
 
 //funcion para actualizar carrito
 const actualizarCarrito = (array) => {
@@ -82,7 +45,6 @@ const actualizarCarrito = (array) => {
         const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
         btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
 
-
         // para guardar los datos en el local storage
         localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
         if (carroCompras.length === 0) {
@@ -93,12 +55,6 @@ const actualizarCarrito = (array) => {
         siNoHizoCompra.innerHTML = '';
         siNoHizoNingunaCompra.innerHTML = '';
     })
-
-
-
-    //mostrar numero de elementos en el icono de compras
-    // const contadorCarroCompras = document.getElementById(`contadorCarroCompras`)
-    // contadorCarroCompras.innerText = array.length
 
     //mostrar el precio total inicial
     const precioTotal = document.getElementById(`precioTotal`)
@@ -180,7 +136,6 @@ const eliminarMedicamento = medicamentoABorrar => {
     actualizarCarrito(carroCompras)
 }
 
-
 //funcion si carro de compras esta vacio
 const siCarritoVacio = () => {
     if (carroCompras.length === 0) {
@@ -190,18 +145,26 @@ const siCarritoVacio = () => {
     }
 }
 
+
+//funcion para vaciar el carro de compras
+const vaciarCarrito = () => {
+    carroCompras.length = 0
+    actualizarCarrito(carroCompras)
+    siCarritoVacio()
+    localStorage.removeItem('carroCompras')
+}
+
+
 //boton para continuar comprando
 const btnContinuarComprando = document.querySelector('.continuar-comprando')
 btnContinuarComprando.onclick = () => {
     window.location.href = '../index.html'
 }
 
-
 //boton finalizar compra
 const botonFinalizarCompra = document.getElementById('botonFinalizarCompra')
 const siNoHizoNingunaCompra = document.getElementById('siNoHizoNingunaCompra')
-botonFinalizarCompra.addEventListener('click', () => {
-
+botonFinalizarCompra.addEventListener('click', (e) => {
     if (carroCompras.length === 0) {
         siNoHizoNingunaCompra.innerHTML = ''; //para reiniciar
         const tituloNoHayCompra = document.createElement('tituloNoHayCompra')
@@ -209,14 +172,39 @@ botonFinalizarCompra.addEventListener('click', () => {
         tituloNoHayCompra.innerHTML = `<h5>No ha seleccionado ningún producto para comprar.</h5>`
         siNoHizoNingunaCompra.appendChild(tituloNoHayCompra)
         localStorage.removeItem('carroCompras')
-
     } else {
+        e.preventDefault()
         vaciarCarrito()
-        Swal.fire({
-            icon: 'success',
-            title: 'Tu pago se ha realizado con Éxito!',
-            showConfirmButton: false,
-            timer: 2500
-        })
+        setTimeout(() => {
+            window.location.href = '../index.html'
+        }, 3000);
+        ejecutarSweetAlert()
     }
 })
+
+//funcion para ejecutar mensaje final
+const ejecutarSweetAlert = () => {
+    let timerInterval
+    Swal.fire({
+        icon: 'success',
+        title: 'Tu pago se ha realizado con Éxito!',
+        html: 'Se cerrará en <b></b> milisegundos.',
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft()
+            }, 100)
+        },
+        willClose: () => {
+            clearInterval(timerInterval)
+        }
+    }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+        }
+    })
+}
