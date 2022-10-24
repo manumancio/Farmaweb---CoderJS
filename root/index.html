@@ -42,10 +42,10 @@
                 <h3>Hasta 3 cuotas sin interés ¡Envío gratis! Rosario desde $5500</h3>
             </div>
             <div class="container-fluid pt-3 pb-4">
-                <a class="navbar-brand" href="index.html">FarmaWeb</a>
+                <a class="navbar-brand" href="./index.html">FarmaWeb</a>
 
                 <!-- buscador -->
-                <div>
+                <div class="nav-responsive">
                     <div class="buscador-div">
                         <input type="search" id="buscadorMedicamentos" class="buscador-input"
                             placeholder="Buscar en nuestra tienda">
@@ -54,20 +54,20 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="nav-responsive">
                     <button id="botonCarroCompras" class="shop-icon"><i class="bi bi-shop-window"><span
                                 id="contadorCarroCompras">0</span></i></button>
 
-                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    <button class="navbar-toggler navbar-toggler--activo" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
-                    </button> -->
+                    </button>
                 </div>
-                <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                <div class="offcanvas offcanvas-end navbar-toggler--activo" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><a class="navbar-brand"
-                                href="index.html">FarmaWeb</a></h5>
+                                href="./index.html">FarmaWeb</a></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -91,7 +91,7 @@
 
                         </ul>
                     </div>
-                </div> -->
+                </div>
             </div>
             <div class="bottom-nav">
                 <ul class="bottom-nav-container">
@@ -117,18 +117,32 @@
                 </ul>
             </div>
         </nav>
+
         <div class="buscador-div-container">
             <div id="displayCoincidencias" class="buscador-div-item ">
                 <!-- genera los divs nuevos del buscador  -->
             </div>
+
+
         </div>
 
 
         <!--  hero // slider -->
         <div>
-            <div class="slider-container">
+            <div class="slider-manual-container">
                 <img id="slider" class="slider-img" alt="medicamentos en promoción">
+
+                <div class="slider-div">
+
+                    <button id="slideManualDerecho" class="slider-manual-btn-derecho slider-manual-btn"><i
+                            class="bi bi-caret-right-fill slider-manual-btn__icon"></i></i></button>
+
+                    <button id="slideManualIzquierdo" class="slider-manual-btn-izquierdo slider-manual-btn"><i
+                            class="bi bi-caret-left-fill slider-manual-btn__icon"></i></button>
+                </div>
+
             </div>
+
         </div>
     </header>
 
@@ -230,13 +244,12 @@
         </div>
 
 
-        <!-- compra final -->
+        <!-- compra final--!>
+
         <div id="checkout" class="compraFinal-main">
-
-
-
             <div class="compraFinal-container">
-                <!-- formulario -->
+
+                <!-- formulario --
                 <section class="compraFinal-item">
                     <h2 class="compraFinal-title">Realizar pago</h2>
                     <form action="" method="get" enctype="text/plain">
@@ -303,29 +316,29 @@
                                         <div>
                                             <label for="tarjetaCuotas">Cantidad de cuotas:</label>
 
-                                            <select id="tarjetaCuotas" class="finalizarCompra-input" name="tarjetaCuotas">
+                                            <select id="tarjetaCuotas" class="finalizarCompra-input"
+                                                name="tarjetaCuotas">
                                                 <!-- <option value="">1 pago sin interés de $<span id="pagoUnaCuota">0</span></option>
-                                                <option value="">3 pagos sin interés de $<span id="pagoTresCuotas">0</span></option> -->
+                                                <option value="">3 pagos sin interés de $<span id="pagoTresCuotas">0</span></option> --
                                             </select>
                                         </div>
                                         <div class="div-finalizarCompra">
                                             <h5>Al continuar acepta nuestros <span>Términos y
                                                     Condiciones</span>.</h5>
-                                                   
+
                                             <input id="botonFinalizarCompra" class="btn btn-dark btn-dark--final"
                                                 type="submit" value="Finalizar Compra"></input>
                                             <div id="siNoHizoNingunaCompra">
-                                                <!-- tituloNoHayCompra -->
+                                                <!-- tituloNoHayCompra --
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </fieldset>
                     </form>
                 </section>
-            </div>
+            </div>-->
         </div>
     </main>
 
@@ -334,7 +347,7 @@
         <div>
             <section>
                 <div>
-                    <h5 class="px-5">FarmaWeb | Manuela Mancione</h5>
+                    <h5 class="p-3">FarmaWeb | Manuela Mancione</h5>
                 </div>
             </section>
         </div>
