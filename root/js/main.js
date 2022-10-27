@@ -1,4 +1,4 @@
-//buscador de medicamentos
+// buscador de medicamentos
 const displayCoincidencias = document.getElementById('displayCoincidencias');
 const buscadorMedicamentos = document.getElementById('buscadorMedicamentos');
 const btnBuscadorMedicamentos = document.getElementById('btnBuscadorMedicamentos')
@@ -42,7 +42,7 @@ const siNoHayCoincidencias = () => {
 }
 
 
-//  funcion para arriba para ver display
+// funcion para ir arriba para ver display
 const irArriba = () => {
     window.scrollTo({
         top: 0,
@@ -60,12 +60,12 @@ buscadorMedicamentos.onkeydown = () => {
 }
 
 
-//slider
+// slider
 //automatico con setInterval
 const slider = document.getElementById("slider")
 const images = ["slideportada1.jpg", "slideportada2.jpg", "slideportada3.jpg"]
 let indexImages = 0
-const cambiarImg = function () {
+const cambiarImg = () => {
     slider.src = `./images/${images[indexImages]}`
     if (indexImages < 2) {
         indexImages++
@@ -82,7 +82,7 @@ slideManualDerecho.addEventListener('click', cambiarImg)
 slideManualIzquierdo.addEventListener('click', cambiarImg)
 
 
-//array carro de compras inicial
+// array carro de compras inicial
 const carroCompras = [];
 
 
@@ -152,7 +152,7 @@ const actualizarCarrito = (array) => {
 
        guardarEnLocalStorage()
 
-        //para reiniciar si selecciono boton vaciarCarrito o finalizarCompra si no hay items en el carro
+        //reinicio boton vaciarCarrito o finalizarCompra si no hay items en el carro
         siNoHizoCompra.innerHTML = '';         
     })
 
@@ -194,7 +194,6 @@ const calcularPrecios = (array) => {
 
 // funcion para obtener la info del local storage
 document.addEventListener('DOMContentLoaded', () => {
-
     if (localStorage.getItem('carroCompras')) {
         const almacenados = JSON.parse(localStorage.getItem('carroCompras'))
         for (items of almacenados)
@@ -204,18 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito(carroCompras)
 })
 
-
 // funcion para eliminar medicamento 
 const eliminarMedicamento = medicamentoABorrar => {
     const medicamento = carroCompras.find(element => element.nombreComercial === medicamentoABorrar);
     const indice = carroCompras.indexOf(medicamento);
     carroCompras.splice(indice, 1);
-
     console.log(carroCompras)
     siCarritoVacio()
     actualizarCarrito(carroCompras)
 }
-
 
 //funcion si carro de compras esta vacio
 const siCarritoVacio = () => {
@@ -225,7 +221,6 @@ const siCarritoVacio = () => {
         localStorage.removeItem('carroCompras')
     }
 }
-
 
 //funcion para vaciar el carro de compras
 const vaciarCarrito = () => {
@@ -237,7 +232,6 @@ const vaciarCarrito = () => {
 
 const vaciarCarroCompras = document.getElementById(`vaciarCarroCompras`)
 vaciarCarroCompras.addEventListener("click", vaciarCarrito)
-
 
 // funcion para agregar medicamento
 const agregarMedicamento = medicamentoAAgregar => {
@@ -251,7 +245,6 @@ const agregarMedicamento = medicamentoAAgregar => {
         carroCompras.push(medicamento);
         console.log(carroCompras);
     }
-
     Toastify({
         text: `Se ha agregado a tu carro de compras: ${medicamentoAAgregar}`,
         duration: 1500,
@@ -323,7 +316,6 @@ const botonIniciarCompra = document.getElementById('botonIniciarCompra')
 const checkout = document.getElementById('checkout')
 const siNoHizoCompra = document.getElementById('siNoHizoCompra')
 siNoHizoCompra.innerHTML = ''; //para reiniciar
-
 botonIniciarCompra.addEventListener("click", () => {
     if (carroCompras.length === 0) {
         siNoHizoCompra.innerHTML = ''; //para reiniciar

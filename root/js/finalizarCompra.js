@@ -9,14 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito(carroCompras)
 })
 
-
 //array carro de compras inicial
 const carroCompras = [];
 
 //funcion para actualizar carrito
 const actualizarCarrito = (array) => {
     contenedorCarroCompras.innerHTML = `` //para reinicializarlo
-
     array.forEach(element => {
         const div = document.createElement('div')
         div.className = ('productosEnElCarrito')
@@ -44,7 +42,6 @@ const actualizarCarrito = (array) => {
         //boton para restar cantidad
         const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
         btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
-
         
        guardarEnLocalStorage()
 
@@ -111,7 +108,6 @@ const agregarMedicamento = medicamentoAAgregar => {
         carroCompras.push(medicamento);
         console.log(carroCompras);
     }
-
     Toastify({
         text: `Se ha agregado a tu carro de compras: ${medicamentoAAgregar}`,
         duration: 1500,

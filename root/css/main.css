@@ -140,10 +140,11 @@ p {
     border: none;
     font-size: 2.5rem;
 }
+
 @media (max-width:768px) {
-      .bi-shop-window {
-          font-size: 2rem;
-      }
+    .bi-shop-window {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width:320px) {
@@ -179,8 +180,9 @@ p {
     flex-wrap: wrap;
 
 }
+
 @media (max-width:320px) {
-    .buscador-div{
+    .buscador-div {
         width: 90vw;
     }
 }
@@ -726,7 +728,14 @@ p {
         "div-finalizarCompra div-finalizarCompra";
 }
 
+@media (max-width:768px) {
 
+    .finalizarCompra-container--formaPago,
+    .finalizarCompra-container--datosPersonales {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 .finalizarCompra h5 {
     font-size: 1rem;
@@ -745,16 +754,6 @@ p {
 
 
 /* pagina final compra finalizarcompra.html */
-.finalizar-compra-div {
-    background-color: #fff;
-    box-shadow: 1px 1px 8px rgb(231, 230, 230);
-    border-radius: 10px;
-}
-
-.finalizar-compra-div--form {
-    background-color: #57974f11;
-}
-
 .finalizar-compra-container {
     display: flex;
     flex-wrap: wrap;
@@ -762,12 +761,39 @@ p {
     justify-content: space-around;
 }
 
-
-
 .finalizar-compra-div {
+    background-color: #fff;
+    box-shadow: 1px 1px 8px rgb(231, 230, 230);
+    border-radius: 10px;
     width: 45%;
     margin: 2rem 1rem;
 }
+
+@media (max-width:1200px) {
+    .finalizar-compra-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .finalizar-compra-div {
+        width: 80%
+    }
+}
+
+@media (max-width:768px) {
+
+    .finalizar-compra-div {
+         width: 95%;
+         margin: 0 auto;   
+    }
+
+}
+
+.finalizar-compra-div--form {
+    background-color: #57974f11;
+}
+
+
 
 
 
