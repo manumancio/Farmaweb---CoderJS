@@ -31,11 +31,16 @@ const filtrar = () => {
             })
         }
     })
-    //si no ponen nada o si no hay coincidencias: 
+    siNoHayCoincidencias()
+}
+
+
+const siNoHayCoincidencias = () => {
     if ((buscadorMedicamentos.value === '') || displayCoincidencias.innerHTML === '') {
         displayCoincidencias.innerHTML = `<h4 class="p-4">Lo siento, no hay coincidencias para ese producto.</h4>`
     }
 }
+
 
 //  funcion para arriba para ver display
 const irArriba = () => {
@@ -145,17 +150,25 @@ const actualizarCarrito = (array) => {
         const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
         btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
 
-        // para guardar los datos en el local storage
-        localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
-        if (carroCompras.length === 0) {
-            localStorage.removeItem('carroCompras')
-        }
+       guardarEnLocalStorage()
 
         //para reiniciar si selecciono boton vaciarCarrito o finalizarCompra si no hay items en el carro
-        siNoHizoCompra.innerHTML = ''; 
-        // siNoHizoNingunaCompra.innerHTML = ''; 
+        siNoHizoCompra.innerHTML = '';         
     })
 
+    calcularPrecios(array)
+}
+
+// funcion para guardar los datos en el local storage
+const guardarEnLocalStorage = () => {
+    localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
+    if (carroCompras.length === 0) {
+        localStorage.removeItem('carroCompras')
+    }
+}
+
+//funcion para calcular los precios
+const calcularPrecios = (array) => {
     //mostrar numero de elementos en el icono de compras
     const contadorCarroCompras = document.getElementById(`contadorCarroCompras`)
     contadorCarroCompras.innerText = array.length
@@ -176,9 +189,8 @@ const actualizarCarrito = (array) => {
 
     //mostrar precio final en 3 cuotas
     const precioEnCuotas = document.getElementById(`precioEnCuotas`)
-    precioEnCuotas.innerText = (precioTotalCalculoConDescuento / 3).toFixed(2)    
+    precioEnCuotas.innerText = (precioTotalCalculoConDescuento / 3).toFixed(2)
 }
-
 
 // funcion para obtener la info del local storage
 document.addEventListener('DOMContentLoaded', () => {
@@ -232,9 +244,7 @@ const agregarMedicamento = medicamentoAAgregar => {
     //primero: veo si ya hay coincidencias -- sumo cantidades
     const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoAAgregar)
     if (siYaExiste) {
-        carroCompras.map(element => {
-            element.nombreComercial === medicamentoAAgregar && element.cantidad++;
-        })
+            existeMedicamentoSumar(medicamentoAAgregar)
     } else {
         //segundo: agrego el medicamento
         const medicamento = medicamentosEnVenta.find(element => element.nombreComercial === medicamentoAAgregar);
@@ -243,30 +253,37 @@ const agregarMedicamento = medicamentoAAgregar => {
     }
 
     Toastify({
-        text: `Se ha agregado a tu carro de compras: 
-        ${medicamentoAAgregar}`,
+        text: `Se ha agregado a tu carro de compras: ${medicamentoAAgregar}`,
         duration: 1500,
         style: {
-            background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.6))",
+            background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.8))",
         },
     }).showToast()
     actualizarCarrito(carroCompras)
 }
 
+const existeMedicamentoSumar = (medicamentoAAgregar) => {
+    carroCompras.map(element => {
+        element.nombreComercial === medicamentoAAgregar && element.cantidad++;
+    })
+}
 
 // funcion para restar unidad de medicamentos 
 const restarUnidad = (medicamentoARestar) => {
     const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoARestar)
     if (siYaExiste) {
-        carroCompras.map(element => {
-            if (element.nombreComercial === medicamentoARestar) {
-                element.cantidad > 1 ? element.cantidad-- : element.cantidad = 1
-            }
-        })
+        existeMedicamentoRestar(medicamentoARestar)
     }
     actualizarCarrito(carroCompras)
 }
 
+const existeMedicamentoRestar = (medicamentoARestar) => {
+    carroCompras.map(element => {
+        if (element.nombreComercial === medicamentoARestar) {
+            element.cantidad > 1 ? element.cantidad-- : element.cantidad = 1
+        }
+    })
+}
 
 //abrir y cerrar modal / setTimeOut
 const botonCierreModal = document.getElementById("botonCierreModal")

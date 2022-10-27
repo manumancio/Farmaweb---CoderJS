@@ -45,17 +45,19 @@ const actualizarCarrito = (array) => {
         const btnDash = document.getElementById(`btnDash${element.nombreComercial}`)
         btnDash.addEventListener("click", () => restarUnidad(element.nombreComercial))
 
-        // para guardar los datos en el local storage
-        localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
-        if (carroCompras.length === 0) {
-            localStorage.removeItem('carroCompras')
-        }
+        
+       guardarEnLocalStorage()
 
         //para reiniciar si selecciono boton vaciarCarrito o finalizarCompra si no hay items en el carro
         siNoHizoCompra.innerHTML = '';
         siNoHizoNingunaCompra.innerHTML = '';
     })
 
+   calcularPrecios(array)
+}
+
+//funcion para calcular los precios
+const calcularPrecios = (array) => {
     //mostrar el precio total inicial
     const precioTotal = document.getElementById(`precioTotal`)
     const precioTotalCalculo = array.reduce((acumulador, element) => acumulador + element.cantidad * element.precio, 0).toFixed(2)
@@ -88,14 +90,21 @@ const actualizarCarrito = (array) => {
     tarjetaCuotas.append(option, option2);
 }
 
+
+// funcion para guardar los datos en el local storage
+const guardarEnLocalStorage = () => {
+    localStorage.setItem('carroCompras', JSON.stringify(carroCompras));
+    if (carroCompras.length === 0) {
+        localStorage.removeItem('carroCompras')
+    }
+}
+
 // funcion para agregar medicamento
 const agregarMedicamento = medicamentoAAgregar => {
     //primero: veo si ya hay coincidencias -- sumo cantidades
     const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoAAgregar)
     if (siYaExiste) {
-        carroCompras.map(element => {
-            element.nombreComercial === medicamentoAAgregar && element.cantidad++;
-        })
+            existeMedicamentoSumar(medicamentoAAgregar)
     } else {
         //segundo: agrego el medicamento
         const medicamento = medicamentosEnVenta.find(element => element.nombreComercial === medicamentoAAgregar);
@@ -112,17 +121,28 @@ const agregarMedicamento = medicamentoAAgregar => {
     }).showToast()
     actualizarCarrito(carroCompras)
 }
+
+const existeMedicamentoSumar = (medicamentoAAgregar) => {
+    carroCompras.map(element => {
+        element.nombreComercial === medicamentoAAgregar && element.cantidad++;
+    })
+}
+
 // funcion para restar unidad de medicamentos 
 const restarUnidad = (medicamentoARestar) => {
     const siYaExiste = carroCompras.some(element => element.nombreComercial === medicamentoARestar)
     if (siYaExiste) {
-        carroCompras.map(element => {
-            if (element.nombreComercial === medicamentoARestar) {
-                element.cantidad > 1 ? element.cantidad-- : element.cantidad = 1
-            }
-        })
+        existeMedicamentoRestar(medicamentoARestar)
     }
     actualizarCarrito(carroCompras)
+}
+
+const existeMedicamentoRestar = (medicamentoARestar) => {
+    carroCompras.map(element => {
+        if (element.nombreComercial === medicamentoARestar) {
+            element.cantidad > 1 ? element.cantidad-- : element.cantidad = 1
+        }
+    })
 }
 
 // funcion para eliminar medicamento 
@@ -179,7 +199,7 @@ botonFinalizarCompra.addEventListener('click', (e) => {
     }
 })
 
-//funcion para ejecutar mensaje final
+//funcion para ejecutar mensaje final de sweetAlert
 const ejecutarSweetAlert = () => {
     let timerInterval
     Swal.fire({
