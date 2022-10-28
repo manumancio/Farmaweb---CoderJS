@@ -246,7 +246,8 @@ const agregarMedicamento = medicamentoAAgregar => {
         console.log(carroCompras);
     }
     Toastify({
-        text: `Se ha agregado a tu carro de compras: ${medicamentoAAgregar}`,
+        text: `Se ha agregado a tu carro de compras: 
+        ${medicamentoAAgregar}`,
         duration: 1500,
         style: {
             background: "linear-gradient(to right, #58974f, hsla(113, 31%, 45%, 0.8))",
