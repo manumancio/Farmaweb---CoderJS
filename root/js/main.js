@@ -89,7 +89,7 @@ const carroCompras = [];
 // funcion para mostrar productos
 const productsContainer = document.getElementById("productsContainer");
 
-const productos = '../json/productos.json';
+const productos = './json/productos.json';
 fetch(productos)
     .then(response => response.json())
     .then(item => {
