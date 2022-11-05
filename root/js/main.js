@@ -89,7 +89,7 @@ const carroCompras = [];
 // funcion para mostrar productos
 const productsContainer = document.getElementById("productsContainer");
 
-const productos = '../../root/json/productos.json';
+const productos = './json/productos.json';
 fetch(productos)
     .then(response => response.json())
     .then(item => {
@@ -328,6 +328,6 @@ botonIniciarCompra.addEventListener("click", () => {
     } else {
         cerrarOffCanvas()
         actualizarCarrito(carroCompras)
-         window.location.href = '../../root/pages/finalizarCompra.html'
+         window.location.href = './pages/finalizarCompra.html'
     }
 })
